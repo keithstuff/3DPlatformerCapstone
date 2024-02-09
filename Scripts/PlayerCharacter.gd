@@ -6,7 +6,7 @@ var pitch_input := 0.0
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 @onready var mesh := $MeshInstance3D
-
+@onready var camera := $TwistPivot/PitchPivot/Camera3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -52,7 +52,7 @@ func _physics_process(delta):
 	
 	if velocity != Vector3.ZERO:
 		var lookdir = atan2(-velocity.x, -velocity.z)
-		mesh.rotation.y = lerp(mesh.rotation.y, lookdir, 0.1)
+		mesh.rotation.y = lerp_angle(rotation.y, lookdir, 1)
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

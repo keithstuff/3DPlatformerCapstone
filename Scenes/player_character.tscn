@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_a2pnt"]
 [ext_resource type="Texture2D" uid="uid://c4jr6yekqk76x" path="res://Art/flushed-face-emoji-512x512-801i44z6.png" id="2_mf433"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_hr08v"]
+[sub_resource type="BoxMesh" id="BoxMesh_s00j8"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vbmb2"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecgf5"]
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 axis_lock_angular_x = true
@@ -13,7 +13,11 @@ axis_lock_angular_z = true
 script = ExtResource("1_a2pnt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_hr08v")
+mesh = SubResource("BoxMesh_s00j8")
+
+[node name="Sprite3D" type="Sprite3D" parent="MeshInstance3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0107703, 0.190637, -0.516847)
+texture = ExtResource("2_mf433")
 
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -24,9 +28,5 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 [node name="Camera3D" type="Camera3D" parent="TwistPivot/PitchPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, 0, 0, 3)
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.2, -0.5)
-texture = ExtResource("2_mf433")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_vbmb2")
+shape = SubResource("BoxShape3D_ecgf5")
