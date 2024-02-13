@@ -9,6 +9,7 @@ var pitch_input := 0.0
 @onready var camera := $TwistPivot/PitchPivot/Camera3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+var angular_acceleration = 7
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -40,7 +41,7 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y) * twist_pivot.basis.inverse()).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
@@ -50,9 +51,11 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	move_and_slide()
 	
-	if velocity != Vector3.ZERO:
+	if velocity.x != 0 or velocity.z != 0:
 		var lookdir = atan2(-velocity.x, -velocity.z)
-		mesh.rotation.y = lerp_angle(rotation.y, lookdir, 1)
+		var tween = get_tree().create_tween()
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, lookdir, delta * angular_acceleration)
+			
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
