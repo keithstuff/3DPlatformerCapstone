@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://whahlk0dm84d"]
+[gd_scene load_steps=8 format=3 uid="uid://whahlk0dm84d"]
 
 [ext_resource type="PackedScene" uid="uid://bb3eg0bombkgb" path="res://Scenes/block.tscn" id="1_utsd0"]
 [ext_resource type="PackedScene" uid="uid://kb784qg6gfr4" path="res://Scenes/player_character.tscn" id="2_e0s1i"]
@@ -7,10 +7,23 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_t4lnc"]
 
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yrg5f"]
+ground_color = Color(1, 1, 1, 1)
+energy_multiplier = 2.9
+
+[sub_resource type="Sky" id="Sky_dtlks"]
+sky_material = SubResource("PhysicalSkyMaterial_yrg5f")
+
+[sub_resource type="Environment" id="Environment_43ybq"]
+background_mode = 2
+sky = SubResource("Sky_dtlks")
+
 [node name="TestLevel" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.998948, 0.00423563, -0.0456534, 0.0444442, -0.334093, 0.941492, -0.0112647, -0.942531, -0.33393, 2.85658, 47.0409, -23.6643)
+transform = Transform3D(0.998948, 0.00423562, -0.0456535, 0.0444442, -0.334093, 0.941492, -0.0112647, -0.942531, -0.33393, 2.7231, 26.385, -23.6669)
+shadow_enabled = true
+shadow_blur = 2.628
 
 [node name="Block" parent="." instance=ExtResource("1_utsd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -13)
@@ -30,3 +43,6 @@ skeleton = NodePath("")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_e0s1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.59809, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_43ybq")

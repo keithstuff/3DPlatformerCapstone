@@ -52,8 +52,7 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	if velocity.x != 0 or velocity.z != 0:
-		var lookdir = atan2(-velocity.x, -velocity.z)
-		var tween = get_tree().create_tween()
+		var lookdir = atan2(velocity.x, velocity.z)
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, lookdir, delta * angular_acceleration)
 			
 	
