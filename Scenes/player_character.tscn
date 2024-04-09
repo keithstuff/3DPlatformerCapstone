@@ -1,7 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://kb784qg6gfr4"]
+[gd_scene load_steps=34 format=3 uid="uid://kb784qg6gfr4"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_a2pnt"]
 [ext_resource type="PackedScene" uid="uid://25kka5ucytfe" path="res://Scenes/character2.glb" id="2_y24un"]
+[ext_resource type="PackedScene" uid="uid://crkcyyimyolqf" path="res://Scenes/HALO.glb" id="3_eekte"]
+[ext_resource type="Material" uid="uid://br7rs3qwp5nmy" path="res://Scenes/player_character.tres" id="3_w0fer"]
+[ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Scenes/toonoutline.tres" id="4_5jqms"]
+[ext_resource type="Texture2D" uid="uid://b0p4tr2n126x0" path="res://Art/whitecirlce.png" id="6_ymat6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2kv8i"]
 radius = 0.22958
@@ -325,6 +329,176 @@ tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 0.000474749, 0.000474749, 0.000474749, 1, 0.04, 1, 0.606186, 0.0602531, 0.000636225, 0.793037)
 
+[sub_resource type="Animation" id="Animation_rd20f"]
+resource_name = "Jumpflip"
+length = 0.4
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -1.33441, 0, 0.1, 1, -2.06676e-07, 1.69495, -2.36409, 0.2, 1, -2.08433e-07, 4.72431, -2.3842, 0.3, 1, 1.86222e-07, 4.03218, 2.13013, 0.4, 1, 0, -1.33441, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.000474749, 0.000474745, 0.000474749, 1, 0.1, 1, 0.383178, 0.000256891, 0.000620271, 0.923674, 0.2, 1, 0.707529, -8.45294e-08, 0.000671331, 0.706684, 0.3, 1, 0.999998, -0.000475468, 0.000473937, -0.00199353, 0.4, 1, 0.000474749, 0.000474745, 0.000474749, 1)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -1.9088e-09, 1.42619, -8.00355e-11, 0.1, 1, -1.96542e-09, 1.42619, -2.34678e-11, 0.2, 1, -2.02204e-09, 1.42619, 3.30998e-11, 0.3, 1, -2.02204e-09, 1.42619, 3.30998e-11, 0.4, 1, -1.9088e-09, 1.42619, -8.00355e-11)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.172928, -0.00448191, -0.0033297, 0.984919, 0.1, 1, 0.391598, -0.00378546, -0.00400946, 0.92012, 0.2, 1, 0.589899, -0.00289211, -0.00448067, 0.80746, 0.3, 1, 0.589899, -0.00289211, -0.00448067, 0.80746, 0.4, 1, 0.172928, -0.00448191, -0.0033297, 0.984919)
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.002")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -0.782935, 1.31316, -6.07832e-07, 0.1, 1, -0.782935, 1.31316, -6.07832e-07, 0.2, 1, -0.782935, 1.31316, -6.07832e-07, 0.3, 1, -0.782935, 1.31316, -6.07832e-07, 0.4, 1, -0.782935, 1.31316, -6.07832e-07)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.002")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -0.515467, 0.592655, 0.614059, -0.0773635, 0.1, 1, 0.515467, -0.592654, -0.614059, 0.0773635, 0.2, 1, 0.515467, -0.592655, -0.614059, 0.0773635, 0.3, 1, 0.515467, -0.592654, -0.614059, 0.0773635, 0.4, 1, -0.515467, 0.592655, 0.614059, -0.0773635)
+tracks/6/type = "position_3d"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.006")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.1, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.2, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.3, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.4, 1, -2.41853e-07, 1.43817, 3.3862e-07)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.006")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.1, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.2, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.3, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.4, 1, -0.272286, -0.109988, 0.252229, 0.922032)
+tracks/8/type = "position_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.003")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.733043, 1.31316, -5.2401e-07, 0.1, 1, 0.733043, 1.31316, -5.2401e-07, 0.2, 1, 0.733043, 1.31316, -5.2401e-07, 0.3, 1, 0.733043, 1.31316, -5.2401e-07, 0.4, 1, 0.733043, 1.31316, -5.2401e-07)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.003")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 0.596618, -0.0768454, -0.492659, 0.628831, 0.1, 1, 0.596618, -0.0768455, -0.492659, 0.628831, 0.2, 1, 0.596618, -0.0768455, -0.492659, 0.628831, 0.3, 1, 0.596618, -0.0768454, -0.492659, 0.628831, 0.4, 1, 0.596618, -0.0768454, -0.492659, 0.628831)
+tracks/10/type = "position_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.007")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.1, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.2, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.3, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.4, 1, 9.29283e-08, 1.43817, -1.92101e-07)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.007")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.1, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.2, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.3, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.4, 1, 0.276761, 0.0778543, 0.260799, 0.921589)
+tracks/12/type = "position_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.004")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 1.0762, 0.0197046, 0.0100079, 0.1, 1, 1.0762, 0.0197046, 0.0100079, 0.2, 1, 1.0762, 0.0197046, 0.0100079, 0.3, 1, 1.0762, 0.0197046, 0.0100079, 0.4, 1, 1.0762, 0.0197046, 0.0100079)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.004")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.922957, 0.000255771, -0.000109313, 0.384902, 0.1, 1, 0.922957, 0.000255771, -0.000109313, 0.384902, 0.2, 1, 0.922957, 0.000255771, -0.000109313, 0.384902, 0.3, 1, 0.922957, 0.000255772, -0.000109312, 0.384902, 0.4, 1, 0.922957, 0.000255771, -0.000109313, 0.384902)
+tracks/14/type = "position_3d"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.008")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.1, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.2, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.3, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.4, 1, -5.42796e-09, 1.43817, 4.07353e-07)
+tracks/15/type = "rotation_3d"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.008")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = PackedFloat32Array(0, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.1, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.2, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.3, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.4, 1, 0.496749, 0.00111905, 0.000647824, 0.867893)
+tracks/16/type = "position_3d"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:LowerLeg.L")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = PackedFloat32Array(0, 1, 0.001948, 1.41896, 0.0435228, 0.1, 1, 0.001948, 1.41896, 0.0435228, 0.2, 1, 0.001948, 1.41896, 0.0435228, 0.3, 1, 0.001948, 1.41896, 0.0435228, 0.4, 1, 0.001948, 1.41896, 0.0435228)
+tracks/17/type = "rotation_3d"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:LowerLeg.L")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = PackedFloat32Array(0, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.1, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.2, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.3, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.4, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08)
+tracks/18/type = "position_3d"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.005")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = PackedFloat32Array(0, 1, -0.995514, 0.0308727, -0.010116, 0.1, 1, -0.995514, 0.0308727, -0.010116, 0.2, 1, -0.995514, 0.0308727, -0.010116, 0.3, 1, -0.995514, 0.0308727, -0.010116, 0.4, 1, -0.995514, 0.0308727, -0.010116)
+tracks/19/type = "rotation_3d"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.005")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = PackedFloat32Array(0, 1, 0.923243, 0.000256232, -0.000108203, 0.384218, 0.1, 1, 0.923243, 0.000256232, -0.000108204, 0.384218, 0.2, 1, 0.923243, 0.000256232, -0.000108204, 0.384218, 0.3, 1, 0.923243, 0.000256232, -0.000108205, 0.384218)
+tracks/20/type = "position_3d"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.009")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = PackedFloat32Array(0, 1, -5.26952e-09, 1.43817, 5.17793e-08, 0.1, 1, -5.26952e-09, 1.43817, 5.17793e-08, 0.2, 1, -5.26952e-09, 1.43817, 5.17793e-08, 0.3, 1, -5.26952e-09, 1.43817, 5.17793e-08)
+tracks/21/type = "rotation_3d"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.009")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = PackedFloat32Array(0, 1, 0.501687, 0.00112474, 0.00064882, 0.865048, 0.1, 1, 0.501687, 0.00112474, 0.00064882, 0.865048, 0.2, 1, 0.501687, 0.00112474, 0.00064882, 0.865048, 0.3, 1, 0.501687, 0.00112474, 0.00064882, 0.865048)
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1:rotation")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.39626, 0, 0), Vector3(3.14159, 0, 0), Vector3(4.71239, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_st8bf"]
 length = 0.001
 tracks/0/type = "rotation_3d"
@@ -404,6 +578,18 @@ tracks/10/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.009")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = PackedFloat32Array(0, 1, 0.265657, -2.61417e-08, -2.66351e-09, 0.964068)
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_gu2s6"]
 resource_name = "Walk"
@@ -882,166 +1068,12 @@ tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 0.606186, 0.0602531, 0.000636225, 0.793037, 1, 1, 0.606186, 0.0602531, 0.000636225, 0.793037)
 
-[sub_resource type="Animation" id="Animation_rd20f"]
-resource_name = "Jumpflip"
-length = 0.4
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.001")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, -1.33441, 0, 0.1, 1, -2.06676e-07, 1.69495, -2.36409, 0.2, 1, -2.08433e-07, 4.72431, -2.3842, 0.3, 1, 1.86222e-07, 4.03218, 2.13013, 0.4, 1, 0, -1.33441, 0)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.001")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0.000474749, 0.000474745, 0.000474749, 1, 0.1, 1, 0.383178, 0.000256891, 0.000620271, 0.923674, 0.2, 1, 0.707529, -8.45294e-08, 0.000671331, 0.706684, 0.3, 1, 0.999998, -0.000475468, 0.000473937, -0.00199353, 0.4, 1, 0.000474749, 0.000474745, 0.000474749, 1)
-tracks/2/type = "position_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, -1.9088e-09, 1.42619, -8.00355e-11, 0.1, 1, -1.96542e-09, 1.42619, -2.34678e-11, 0.2, 1, -2.02204e-09, 1.42619, 3.30998e-11, 0.3, 1, -2.02204e-09, 1.42619, 3.30998e-11, 0.4, 1, -1.9088e-09, 1.42619, -8.00355e-11)
-tracks/3/type = "rotation_3d"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = PackedFloat32Array(0, 1, 0.172928, -0.00448191, -0.0033297, 0.984919, 0.1, 1, 0.391598, -0.00378546, -0.00400946, 0.92012, 0.2, 1, 0.589899, -0.00289211, -0.00448067, 0.80746, 0.3, 1, 0.589899, -0.00289211, -0.00448067, 0.80746, 0.4, 1, 0.172928, -0.00448191, -0.0033297, 0.984919)
-tracks/4/type = "position_3d"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.002")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, -0.782935, 1.31316, -6.07832e-07, 0.1, 1, -0.782935, 1.31316, -6.07832e-07, 0.2, 1, -0.782935, 1.31316, -6.07832e-07, 0.3, 1, -0.782935, 1.31316, -6.07832e-07, 0.4, 1, -0.782935, 1.31316, -6.07832e-07)
-tracks/5/type = "rotation_3d"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.002")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = PackedFloat32Array(0, 1, -0.515467, 0.592655, 0.614059, -0.0773635, 0.1, 1, 0.515467, -0.592654, -0.614059, 0.0773635, 0.2, 1, 0.515467, -0.592655, -0.614059, 0.0773635, 0.3, 1, 0.515467, -0.592654, -0.614059, 0.0773635, 0.4, 1, -0.515467, 0.592655, 0.614059, -0.0773635)
-tracks/6/type = "position_3d"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.006")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = PackedFloat32Array(0, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.1, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.2, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.3, 1, -2.41853e-07, 1.43817, 3.3862e-07, 0.4, 1, -2.41853e-07, 1.43817, 3.3862e-07)
-tracks/7/type = "rotation_3d"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.006")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = PackedFloat32Array(0, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.1, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.2, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.3, 1, -0.272286, -0.109988, 0.252229, 0.922032, 0.4, 1, -0.272286, -0.109988, 0.252229, 0.922032)
-tracks/8/type = "position_3d"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.003")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = PackedFloat32Array(0, 1, 0.733043, 1.31316, -5.2401e-07, 0.1, 1, 0.733043, 1.31316, -5.2401e-07, 0.2, 1, 0.733043, 1.31316, -5.2401e-07, 0.3, 1, 0.733043, 1.31316, -5.2401e-07, 0.4, 1, 0.733043, 1.31316, -5.2401e-07)
-tracks/9/type = "rotation_3d"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.003")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = PackedFloat32Array(0, 1, 0.596618, -0.0768454, -0.492659, 0.628831, 0.1, 1, 0.596618, -0.0768455, -0.492659, 0.628831, 0.2, 1, 0.596618, -0.0768455, -0.492659, 0.628831, 0.3, 1, 0.596618, -0.0768454, -0.492659, 0.628831, 0.4, 1, 0.596618, -0.0768454, -0.492659, 0.628831)
-tracks/10/type = "position_3d"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.007")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = PackedFloat32Array(0, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.1, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.2, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.3, 1, 9.29283e-08, 1.43817, -1.92101e-07, 0.4, 1, 9.29283e-08, 1.43817, -1.92101e-07)
-tracks/11/type = "rotation_3d"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.007")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = PackedFloat32Array(0, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.1, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.2, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.3, 1, 0.276761, 0.0778543, 0.260799, 0.921589, 0.4, 1, 0.276761, 0.0778543, 0.260799, 0.921589)
-tracks/12/type = "position_3d"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.004")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = PackedFloat32Array(0, 1, 1.0762, 0.0197046, 0.0100079, 0.1, 1, 1.0762, 0.0197046, 0.0100079, 0.2, 1, 1.0762, 0.0197046, 0.0100079, 0.3, 1, 1.0762, 0.0197046, 0.0100079, 0.4, 1, 1.0762, 0.0197046, 0.0100079)
-tracks/13/type = "rotation_3d"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.004")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = PackedFloat32Array(0, 1, 0.922957, 0.000255771, -0.000109313, 0.384902, 0.1, 1, 0.922957, 0.000255771, -0.000109313, 0.384902, 0.2, 1, 0.922957, 0.000255771, -0.000109313, 0.384902, 0.3, 1, 0.922957, 0.000255772, -0.000109312, 0.384902, 0.4, 1, 0.922957, 0.000255771, -0.000109313, 0.384902)
-tracks/14/type = "position_3d"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.008")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = PackedFloat32Array(0, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.1, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.2, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.3, 1, -5.42796e-09, 1.43817, 4.07353e-07, 0.4, 1, -5.42796e-09, 1.43817, 4.07353e-07)
-tracks/15/type = "rotation_3d"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.008")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = PackedFloat32Array(0, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.1, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.2, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.3, 1, 0.496749, 0.00111905, 0.000647824, 0.867893, 0.4, 1, 0.496749, 0.00111905, 0.000647824, 0.867893)
-tracks/16/type = "position_3d"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:LowerLeg.L")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = PackedFloat32Array(0, 1, 0.001948, 1.41896, 0.0435228, 0.1, 1, 0.001948, 1.41896, 0.0435228, 0.2, 1, 0.001948, 1.41896, 0.0435228, 0.3, 1, 0.001948, 1.41896, 0.0435228, 0.4, 1, 0.001948, 1.41896, 0.0435228)
-tracks/17/type = "rotation_3d"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:LowerLeg.L")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = PackedFloat32Array(0, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.1, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.2, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.3, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08, 0.4, 1, 2.52015e-09, 0.999878, 0.0156111, -3.86633e-08)
-tracks/18/type = "position_3d"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.005")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = PackedFloat32Array(0, 1, -0.995514, 0.0308727, -0.010116, 0.1, 1, -0.995514, 0.0308727, -0.010116, 0.2, 1, -0.995514, 0.0308727, -0.010116, 0.3, 1, -0.995514, 0.0308727, -0.010116, 0.4, 1, -0.995514, 0.0308727, -0.010116)
-tracks/19/type = "rotation_3d"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.005")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = PackedFloat32Array(0, 1, 0.923243, 0.000256232, -0.000108203, 0.384218, 0.1, 1, 0.923243, 0.000256232, -0.000108204, 0.384218, 0.2, 1, 0.923243, 0.000256232, -0.000108204, 0.384218, 0.3, 1, 0.923243, 0.000256232, -0.000108205, 0.384218)
-tracks/20/type = "position_3d"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.009")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = PackedFloat32Array(0, 1, -5.26952e-09, 1.43817, 5.17793e-08, 0.1, 1, -5.26952e-09, 1.43817, 5.17793e-08, 0.2, 1, -5.26952e-09, 1.43817, 5.17793e-08, 0.3, 1, -5.26952e-09, 1.43817, 5.17793e-08)
-tracks/21/type = "rotation_3d"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("MeshInstance3D/Armature/GeneralSkeleton:Bone.009")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = PackedFloat32Array(0, 1, 0.501687, 0.00112474, 0.00064882, 0.865048, 0.1, 1, 0.501687, 0.00112474, 0.00064882, 0.865048, 0.2, 1, 0.501687, 0.00112474, 0.00064882, 0.865048, 0.3, 1, 0.501687, 0.00112474, 0.00064882, 0.865048)
+[sub_resource type="Animation" id="Animation_srhn1"]
+resource_name = "Blink"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_spyc4"]
 _data = {
+"Blink": SubResource("Animation_srhn1"),
 "Idle": SubResource("Animation_lpjyc"),
 "Jump": SubResource("Animation_681j4"),
 "Jumpflip": SubResource("Animation_rd20f"),
@@ -1050,6 +1082,8 @@ _data = {
 "Walk2": SubResource("Animation_a512d"),
 "falling": SubResource("Animation_cn0bc")
 }
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_ukskq"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nndwh"]
 animation = &"Idle"
@@ -1070,13 +1104,15 @@ animation = &"Jumpflip"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_cnwqu"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d162y"]
-graph_offset = Vector2(1096.67, 302.174)
+graph_offset = Vector2(-15.843, 47.5259)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_ukskq")
+nodes/Add2/position = Vector2(980, 420)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_yy0xs")
 nodes/Animation/position = Vector2(500, 320)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_nndwh")
 "nodes/Animation 2/position" = Vector2(500, 180)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_314k5")
-"nodes/Animation 3/position" = Vector2(820, 340)
+"nodes/Animation 3/position" = Vector2(760, 300)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_nt72b")
 nodes/Blend2/position = Vector2(720, 100)
 nodes/FallingBlend/node = SubResource("AnimationNodeBlend2_i3yyb")
@@ -1085,8 +1121,85 @@ nodes/Jump/node = SubResource("AnimationNodeAnimation_565ao")
 nodes/Jump/position = Vector2(1280, 380)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_cnwqu")
 nodes/OneShot/position = Vector2(1420, 140)
-nodes/output/position = Vector2(1600, 180)
-node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"FallingBlend", 0, &"Blend2", &"FallingBlend", 1, &"Animation 3", &"OneShot", 0, &"FallingBlend", &"OneShot", 1, &"Jump", &"output", 0, &"OneShot"]
+nodes/output/position = Vector2(1620, 180)
+node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"FallingBlend", 0, &"Blend2", &"FallingBlend", 1, &"Animation 3", &"OneShot", 0, &"FallingBlend", &"OneShot", 1, &"Jump"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md2vy"]
+next_pass = ExtResource("4_5jqms")
+albedo_color = Color(0.945098, 1, 1, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp8ec"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clrn8"]
+next_pass = SubResource("StandardMaterial3D_fp8ec")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 5.41
+
+[sub_resource type="Animation" id="Animation_l3nrf"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4mshb"]
+resource_name = "spin"
+length = 8.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0), Vector3(0, 3.14159, 0), Vector3(0, 4.71239, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wjvvv"]
+_data = {
+"RESET": SubResource("Animation_l3nrf"),
+"spin": SubResource("Animation_4mshb")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6erv8"]
+animation = &"spin"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_0vajw"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_6erv8")
+nodes/Animation/position = Vector2(59.9153, 141.709)
+node_connections = [&"output", 0, &"Animation"]
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
@@ -1113,6 +1226,7 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeBlendTree_d162y")
 anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 0
 parameters/Blend2/blend_amount = 0
 parameters/FallingBlend/blend_amount = 0
 parameters/OneShot/active = false
@@ -1131,37 +1245,103 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
 transform = Transform3D(1, 0, -9.23706e-14, 0, 1, 0, 9.23706e-14, 0, 1, 0, 0, 0)
 bones/0/position = Vector3(0, -1.33441, 0)
 bones/0/rotation = Quaternion(-7.34796e-05, 0.00485682, 0.00269492, 0.999985)
-bones/0/scale = Vector3(1, 0.999999, 0.999998)
 bones/1/position = Vector3(-1.9088e-09, 1.42619, -8.00355e-11)
 bones/1/rotation = Quaternion(7.3473e-05, -0.00485682, -0.00269493, 0.999985)
-bones/1/scale = Vector3(1, 1, 0.999999)
+bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(-0.782935, 1.31316, -6.37134e-07)
 bones/2/rotation = Quaternion(0.878099, -0.287219, -0.363721, -0.11897)
-bones/2/scale = Vector3(1, 1, 0.999999)
+bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(-1.99928e-07, 1.43817, 2.99784e-07)
 bones/3/rotation = Quaternion(2.97851e-12, 6.70552e-08, 2.97984e-12, 1)
-bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(0.733043, 1.31316, -5.5394e-07)
 bones/4/rotation = Quaternion(0.357234, 0.136831, -0.862811, 0.330483)
-bones/4/scale = Vector3(1, 1, 0.999999)
+bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(3.21044e-07, 1.43817, -6.4043e-08)
 bones/5/rotation = Quaternion(-2.47083e-09, -6.6837e-08, -1.44991e-10, 1)
-bones/5/scale = Vector3(0.999999, 1, 0.999999)
 bones/6/position = Vector3(1.0762, 0.0197046, 0.0100079)
 bones/6/rotation = Quaternion(0.964932, -0.00132626, 0.00539369, -0.262441)
-bones/6/scale = Vector3(1, 0.999999, 0.999999)
+bones/6/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-5.2695e-09, 1.43817, 1.54148e-07)
 bones/7/rotation = Quaternion(0.262113, -0.0111231, 0.00302737, 0.964968)
-bones/7/scale = Vector3(1, 1, 1)
 bones/8/enabled = false
 bones/8/position = Vector3(0.001948, 1.41896, 0.0435228)
 bones/8/rotation = Quaternion(2.52015e-09, 0.999878, 0.0156111, -3.86633e-08)
 bones/8/scale = Vector3(1.43817, 1.43817, 1.43817)
 bones/9/position = Vector3(-0.995514, 0.0308727, -0.010116)
 bones/9/rotation = Quaternion(0.966501, -0.0038513, 0.00400235, 0.256602)
-bones/9/scale = Vector3(1, 0.999999, 0.999999)
+bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(-5.26952e-09, 1.43817, 5.17793e-08)
 bones/10/rotation = Quaternion(0.265657, -2.61417e-08, -2.66351e-09, 0.964068)
-bones/10/scale = Vector3(1, 1, 1)
+
+[node name="ArmL" parent="MeshInstance3D/Armature/GeneralSkeleton" index="0"]
+surface_material_override/0 = ExtResource("3_w0fer")
+
+[node name="ArmR" parent="MeshInstance3D/Armature/GeneralSkeleton" index="1"]
+surface_material_override/0 = ExtResource("3_w0fer")
+
+[node name="Body" parent="MeshInstance3D/Armature/GeneralSkeleton" index="2"]
+surface_material_override/0 = ExtResource("3_w0fer")
+
+[node name="Hair" parent="MeshInstance3D/Armature/GeneralSkeleton" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_md2vy")
+
+[node name="Heady" parent="MeshInstance3D/Armature/GeneralSkeleton" index="4"]
+surface_material_override/0 = ExtResource("3_w0fer")
+
+[node name="HaloArm1" type="Node3D" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0128976, 1.89937, -0.0523861)
+
+[node name="HaloArm2" type="Node3D" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1"]
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 2.84217e-14, -0.707106, 0.707106, -9.60194e-07, 6.00204, -3.28682)
+
+[node name="HALO" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2" instance=ExtResource("3_eekte")]
+transform = Transform3D(1, 0, 0, 0, 0.43, 0, 0, 0, 1, -0.0128976, 0.748688, 0.603818)
+
+[node name="Torus" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_clrn8")
+
+[node name="HaloPlayer" type="AnimationPlayer" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]
+libraries = {
+"": SubResource("AnimationLibrary_wjvvv")
+}
+
+[node name="HaloTree" type="AnimationTree" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]
+libraries = {
+"": SubResource("AnimationLibrary_wjvvv")
+}
+tree_root = SubResource("AnimationNodeBlendTree_0vajw")
+anim_player = NodePath("../HaloPlayer")
+
+[node name="LegL" parent="MeshInstance3D/Armature/GeneralSkeleton" index="5"]
+surface_material_override/0 = ExtResource("3_w0fer")
+
+[node name="LegR" parent="MeshInstance3D/Armature/GeneralSkeleton" index="6"]
+surface_material_override/0 = ExtResource("3_w0fer")
+
+[node name="Eyes" type="Sprite3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0, 13, 0)
+
+[node name="EyeL" type="Sprite3D" parent="MeshInstance3D/Eyes"]
+transform = Transform3D(-0.3, 0, -1.50996e-07, 0, 0.4, 0, 4.52987e-08, 0, -1, -1.5, 0, 4.8)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("6_ymat6")
+
+[node name="EyeR" type="Sprite3D" parent="MeshInstance3D/Eyes"]
+transform = Transform3D(-0.3, 0, -3.01992e-08, 0, 0.4, 0, 4.52987e-08, 0, -0.2, 1.5, 0, 4.8)
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("6_ymat6")
+
+[node name="ActionCooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.39074e-10, 0.936464, 0.00731015)
+light_energy = 0.5
+light_bake_mode = 1
+distance_fade_enabled = true
+omni_range = 3.19322
+omni_attenuation = 1.8025
 
 [editable path="MeshInstance3D"]
+[editable path="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]

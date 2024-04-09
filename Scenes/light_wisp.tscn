@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://x10w43koek8p"]
+
+[ext_resource type="Script" path="res://Scripts/light_wisp.gd" id="1_k05eh"]
+[ext_resource type="Texture2D" uid="uid://cixi16hc5myeq" path="res://Art/particle_sprite_smoke.webp" id="1_nc7wy"]
+
+[sub_resource type="Curve" id="Curve_6kvaa"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.373832, 0.923077), 7.05495, 7.05495, 0, 0, Vector2(0.663551, 0.89011), -6.85897, -6.85897, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_6hhm0"]
+curve = SubResource("Curve_6kvaa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rme7q"]
+angle_min = -230.1
+angle_max = 444.4
+angular_velocity_min = 0.1
+angular_velocity_max = 0.5
+angular_velocity_curve = SubResource("CurveTexture_6hhm0")
+gravity = Vector3(0, 0, 0)
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kt70"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_nc7wy")
+billboard_mode = 3
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ycqkv"]
+material = SubResource("StandardMaterial3D_7kt70")
+
+[sub_resource type="SphereMesh" id="SphereMesh_qqbg2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nit5i"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 3.27
+
+[node name="LightWisp" type="Node3D"]
+script = ExtResource("1_k05eh")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 10
+explosiveness = 0.03
+randomness = 0.29
+process_material = SubResource("ParticleProcessMaterial_rme7q")
+draw_pass_1 = SubResource("QuadMesh_ycqkv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("SphereMesh_qqbg2")
+surface_material_override/0 = SubResource("StandardMaterial3D_nit5i")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 0.5
+omni_range = 15.0
+omni_attenuation = 0.31864
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]

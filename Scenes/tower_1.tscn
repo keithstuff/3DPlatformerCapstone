@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://c75ik84c50bhd"]
+
+[ext_resource type="Material" uid="uid://cxofi4pdcyc0r" path="res://tower1.tres" id="1_iv8wg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hoaw7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_je3bk"]
+albedo_color = Color(0.384314, 0.384314, 0.384314, 1)
+metallic = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_bs66h"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jct2r"]
+
+[node name="Tower1" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("CylinderMesh_hoaw7")
+surface_material_override/0 = SubResource("StandardMaterial3D_je3bk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.565685, 0.565685, 0, -0.447897, 0.447897, 0.488647, 0.345526, -0.345526, 0.633422, 0, 1.151, 0)
+mesh = SubResource("BoxMesh_bs66h")
+surface_material_override/0 = ExtResource("1_iv8wg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00856564, 0.584692, -0.54595, -0.437918, 0.453478, 0.492529, 0.669443, 0.304125, 0.315204, 0, 1.151, 0)
+mesh = SubResource("BoxMesh_jct2r")
+skeleton = NodePath("../MeshInstance3D2")
+surface_material_override/0 = ExtResource("1_iv8wg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13927, 0)
+omni_range = 50.0
+omni_attenuation = 0.5
