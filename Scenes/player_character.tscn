@@ -11,6 +11,9 @@
 radius = 0.22958
 height = 1.57237
 
+[sub_resource type="Animation" id="Animation_srhn1"]
+resource_name = "Blink"
+
 [sub_resource type="Animation" id="Animation_lpjyc"]
 resource_name = "Idle"
 length = 2.0
@@ -1068,9 +1071,6 @@ tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = PackedFloat32Array(0, 1, 0.606186, 0.0602531, 0.000636225, 0.793037, 1, 1, 0.606186, 0.0602531, 0.000636225, 0.793037)
 
-[sub_resource type="Animation" id="Animation_srhn1"]
-resource_name = "Blink"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_spyc4"]
 _data = {
 "Blink": SubResource("Animation_srhn1"),
@@ -1104,7 +1104,6 @@ animation = &"Jumpflip"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_cnwqu"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d162y"]
-graph_offset = Vector2(-15.843, 47.5259)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_ukskq")
 nodes/Add2/position = Vector2(980, 420)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_yy0xs")
@@ -1122,7 +1121,7 @@ nodes/Jump/position = Vector2(1280, 380)
 nodes/OneShot/node = SubResource("AnimationNodeOneShot_cnwqu")
 nodes/OneShot/position = Vector2(1420, 140)
 nodes/output/position = Vector2(1620, 180)
-node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"FallingBlend", 0, &"Blend2", &"FallingBlend", 1, &"Animation 3", &"OneShot", 0, &"FallingBlend", &"OneShot", 1, &"Jump"]
+node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"FallingBlend", 0, &"Blend2", &"FallingBlend", 1, &"Animation 3", &"OneShot", 0, &"FallingBlend", &"OneShot", 1, &"Jump", &"output", 0, &"OneShot"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md2vy"]
 next_pass = ExtResource("4_5jqms")
@@ -1320,6 +1319,7 @@ surface_material_override/0 = ExtResource("3_w0fer")
 
 [node name="Eyes" type="Sprite3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 2.13163e-14, 0, 1, 0, 13, 0)
+visible = false
 
 [node name="EyeL" type="Sprite3D" parent="MeshInstance3D/Eyes"]
 transform = Transform3D(-0.3, 0, -1.50996e-07, 0, 0.4, 0, 4.52987e-08, 0, -1, -1.5, 0, 4.8)

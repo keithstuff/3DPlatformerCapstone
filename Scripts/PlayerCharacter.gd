@@ -19,6 +19,7 @@ signal assign_wisp_number(num)
 var wispcount = 0
 var wispmax = 3
 var wispline = 1
+var wisptotal = 0
 
 const DASH_SPEED = 25.0
 const DASH_TIME = 0.3
@@ -80,8 +81,11 @@ func _physics_process(delta):
 		dash_bool = true
 		velocity = Vector3(direction.x * DASH_SPEED, 0, direction.z * DASH_SPEED)
 	
-	if Input.is_action_just_pressed("wisp") and wispcount < wispmax:
+	if Input.is_action_just_pressed("wisp") and wisptotal < wispmax:
 		spawn_wisp()
+	
+	if Input.is_action_just_pressed("recall") and wisptotal > 0:
+		wisp_recall()
 	
 	#Movement
 	if dash_bool:
@@ -129,10 +133,26 @@ func _ready() -> void:
 
 
 func spawn_wisp():
-	var wisp_scene = preload("res://Scenes/light_wisp.tscn")
-	var wisp = wisp_scene.instantiate()
-	wisp.position = Vector3(position.x, position.y + 0.5, position.z)
-	level.add_child(wisp)
-	assign_wisp_number.emit(wispcount+1)
-	
+	if wisptotal < 3:
+		var wisp_scene = preload("res://Scenes/light_wisp.tscn")
+		var wisp = wisp_scene.instantiate()
+		wisp.position = Vector3(position.x, position.y + 0.5, position.z)
+		level.add_child(wisp)
+		if wispcount < 3:
+			wispcount += 1
+		else:
+			wispcount = 1
+		assign_wisp_number.emit(wispcount)
+		print(wispcount)
+		wisptotal+=1
+		
 
+func wisp_recall():
+	if wisptotal > 0:
+		recall_wisp.emit(wispline)
+		print(wispline)
+		if wispline >= 3:
+			wispline = 1
+		else:
+			wispline += 1
+		wisptotal -= 1
