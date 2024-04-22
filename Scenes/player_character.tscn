@@ -1,11 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://kb784qg6gfr4"]
+[gd_scene load_steps=35 format=3 uid="uid://kb784qg6gfr4"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_a2pnt"]
 [ext_resource type="PackedScene" uid="uid://25kka5ucytfe" path="res://Scenes/character2.glb" id="2_y24un"]
 [ext_resource type="PackedScene" uid="uid://crkcyyimyolqf" path="res://Scenes/HALO.glb" id="3_eekte"]
-[ext_resource type="Material" uid="uid://br7rs3qwp5nmy" path="res://Scenes/player_character.tres" id="3_w0fer"]
-[ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Scenes/toonoutline.tres" id="4_5jqms"]
-[ext_resource type="Texture2D" uid="uid://b0p4tr2n126x0" path="res://Art/whitecirlce.png" id="6_ymat6"]
+[ext_resource type="Material" uid="uid://br7rs3qwp5nmy" path="res://Art/materials/player_character.tres" id="3_w0fer"]
+[ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Art/materials/toonoutline.tres" id="4_5jqms"]
+[ext_resource type="Texture2D" uid="uid://b0p4tr2n126x0" path="res://Art/materials/whitecirlce.png" id="6_ymat6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2kv8i"]
 radius = 0.22958
@@ -1200,7 +1200,10 @@ nodes/Animation/node = SubResource("AnimationNodeAnimation_6erv8")
 nodes/Animation/position = Vector2(59.9153, 141.709)
 node_connections = [&"output", 0, &"Animation"]
 
-[node name="PlayerCharacter" type="CharacterBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hvv2b"]
+size = Vector3(3.01074, 2.31219, 3)
+
+[node name="PlayerCharacter" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -1342,6 +1345,13 @@ light_bake_mode = 1
 distance_fade_enabled = true
 omni_range = 3.19322
 omni_attenuation = 1.8025
+
+[node name="InteractRange" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499385, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656097, 0)
+shape = SubResource("BoxShape3D_hvv2b")
 
 [editable path="MeshInstance3D"]
 [editable path="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]

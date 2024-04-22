@@ -13,6 +13,8 @@ var dash_bool := false
 @onready var animtree := $AnimationTree
 @onready var animplayer := $AnimationPlayer
 @onready var level := get_parent()
+@onready var intrange := $InteractRange
+
 
 signal recall_wisp(num)
 signal assign_wisp_number(num)
@@ -52,7 +54,9 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor() and velocity.y >= TERM_FALL_VELOCITY and not dash_bool:
 		velocity.y -= gravity * delta
-
+	
+	
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -120,7 +124,10 @@ func _physics_process(delta):
 	if velocity.x != 0 or velocity.z != 0:
 		var lookdir = atan2(velocity.x, velocity.z)
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, lookdir, delta * angular_acceleration)
-			
+
+
+
+
 #Camera
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -156,3 +163,7 @@ func wisp_recall():
 		else:
 			wispline += 1
 		wisptotal -= 1
+
+
+
+

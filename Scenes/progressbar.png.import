@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0slkq00pl6k"
-path="res://.godot/imported/mage_texture.png-549bcf828b018181690b6ce15e766f3b.ctex"
+uid="uid://5gldwvkhicev"
+path="res://.godot/imported/progressbar.png-a8bbcb9fc6d68873879a5d46b3512682.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/gltf/mage_texture.png"
-dest_files=["res://.godot/imported/mage_texture.png-549bcf828b018181690b6ce15e766f3b.ctex"]
+source_file="res://Scenes/progressbar.png"
+dest_files=["res://.godot/imported/progressbar.png-a8bbcb9fc6d68873879a5d46b3512682.ctex"]
 
 [params]
 

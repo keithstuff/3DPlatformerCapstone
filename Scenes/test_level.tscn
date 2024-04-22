@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://whahlk0dm84d"]
+[gd_scene load_steps=18 format=3 uid="uid://whahlk0dm84d"]
 
 [ext_resource type="PackedScene" uid="uid://bb3eg0bombkgb" path="res://Scenes/block.tscn" id="1_utsd0"]
 [ext_resource type="PackedScene" uid="uid://kb784qg6gfr4" path="res://Scenes/player_character.tscn" id="2_e0s1i"]
-[ext_resource type="PackedScene" uid="uid://cbxd5sl634j4t" path="res://levelblock.tscn" id="3_8j8uh"]
-[ext_resource type="PackedScene" uid="uid://biec6lstjm5k2" path="res://Ramp.tscn" id="4_o6exy"]
-[ext_resource type="Script" path="res://Scenes/GameManager.gd" id="5_ldtci"]
+[ext_resource type="PackedScene" uid="uid://cbxd5sl634j4t" path="res://Scenes/levelblock.tscn" id="3_8j8uh"]
+[ext_resource type="PackedScene" uid="uid://biec6lstjm5k2" path="res://Scenes/Ramp.tscn" id="4_o6exy"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="5_ldtci"]
 [ext_resource type="PackedScene" uid="uid://c75ik84c50bhd" path="res://Scenes/tower_1.tscn" id="6_6wgvn"]
+[ext_resource type="PackedScene" uid="uid://b36xbv1t8d61f" path="res://Scenes/UI.tscn" id="7_cdyw1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxtko"]
 
@@ -66,7 +67,12 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_hse6u")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_e0s1i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.7487, 0.0127884, -1.48911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6513, 10.0128, -1.48911)
+
+[node name="HALO" parent="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.43, 0, 0, 0, 1, -0.0128976, 0.748688, 0.603818)
+
+[node name="InteractRange" parent="PlayerCharacter" index="7" groups=["player"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_43ybq")
@@ -123,13 +129,13 @@ transform = Transform3D(4.21908, 0, 0, 0, 4.48899, 0, 0, 0, -3.50128, -13.3851, 
 transform = Transform3D(4.21908, 0, 0, 0, 4.48899, 0, 0, 0, -3.50128, -5.97472, 15.2166, -35.9861)
 
 [node name="Block17" parent="." instance=ExtResource("3_8j8uh")]
-transform = Transform3D(2.47951, 0.416526, -1.25504, 0, 4.3977, 0.773761, -1.05637, 0.977667, -2.94581, 4.28628, 15.2166, -35.9861)
+transform = Transform3D(3.38647, 0.431773, -1.06493, 0, 4.55867, 0.656553, -1.44277, 1.01345, -2.49958, 4.28628, 15.2166, -35.9861)
 
 [node name="Block18" parent="." instance=ExtResource("3_8j8uh")]
-transform = Transform3D(2.23919, 1.19153, 1.0322, -1.39297, 1.02022, 2.2959, -0.556379, 2.24115, -1.59392, 12.8021, 15.2166, -35.9861)
+transform = Transform3D(0.821116, 1.56854, 2.26597, -2.50601, 0.0163724, 1.09634, -0.556379, 2.24115, -1.59392, 12.8021, 15.2166, -35.9861)
 
 [node name="Block19" parent="." instance=ExtResource("3_8j8uh")]
-transform = Transform3D(2.367, 1.26459, 0.364812, -0.929005, 1.18847, 2.47929, -0.893385, 2.11464, -1.61158, 19.9823, 15.2166, -35.9861)
+transform = Transform3D(2.367, 1.26459, 0.364812, -0.168962, -0.389924, 2.94311, -1.27775, 2.39419, 0.286628, 19.9823, 15.2166, -35.9861)
 
 [node name="Block3" parent="." instance=ExtResource("3_8j8uh")]
 transform = Transform3D(9.87315, 0, 0, 0, 13.7599, 0, 0, 0, 15.6529, 27.0446, 4.79003, 36.3098)
@@ -572,17 +578,30 @@ shape = SubResource("BoxShape3D_v5lmh")
 mesh = SubResource("BoxMesh_5oakv")
 surface_material_override/0 = SubResource("StandardMaterial3D_wixer")
 
+[node name="Tower1" parent="." instance=ExtResource("6_6wgvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99388, 2.25152, -0.0914834)
+
+[node name="Tower2" parent="." instance=ExtResource("6_6wgvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.4367, 8.12726, -35.3456)
+
+[node name="Tower3" parent="." instance=ExtResource("6_6wgvn")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -19.7709, 17.1061, 7.06338)
+
+[node name="Tower4" parent="." instance=ExtResource("6_6wgvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8736, 13.094, 39.1222)
+
+[node name="Tower5" parent="." instance=ExtResource("6_6wgvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5997, 15.5434, -34.1908)
+
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("5_ldtci")
 
-[node name="Tower1" parent="." instance=ExtResource("6_6wgvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0578, 13.1944, 39.592)
+[node name="UI" parent="." instance=ExtResource("7_cdyw1")]
+mouse_filter = 2
 
-[node name="Tower4" parent="." instance=ExtResource("6_6wgvn")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -19.8015, 17.2157, 7.76873)
+[connection signal="area_entered" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_entered"]
+[connection signal="area_exited" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_exited"]
 
-[node name="Tower2" parent="." instance=ExtResource("6_6wgvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.0463, 7.67028, -31.7284)
-
-[node name="Tower3" parent="." instance=ExtResource("6_6wgvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.5348, 15.4221, -34.1956)
+[editable path="PlayerCharacter"]
+[editable path="PlayerCharacter/MeshInstance3D"]
+[editable path="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]

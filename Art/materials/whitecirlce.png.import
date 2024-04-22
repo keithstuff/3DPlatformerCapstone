@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba5pnc5leg5k2"
-path.s3tc="res://.godot/imported/Rogue_Hooded_rogue_texture.png-dd1066dccefe4451badff029124a9d5c.s3tc.ctex"
+uid="uid://b0p4tr2n126x0"
+path.s3tc="res://.godot/imported/whitecirlce.png-85d2daf4af2d70c4891c5de0d9fce4a8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://Art/gltf/Rogue_Hooded_rogue_texture.png"
-dest_files=["res://.godot/imported/Rogue_Hooded_rogue_texture.png-dd1066dccefe4451badff029124a9d5c.s3tc.ctex"]
+source_file="res://Art/materials/whitecirlce.png"
+dest_files=["res://.godot/imported/whitecirlce.png-85d2daf4af2d70c4891c5de0d9fce4a8.s3tc.ctex"]
 
 [params]
 

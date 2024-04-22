@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://br7rs3qwp5nmy"]
 
-[ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Scenes/toonoutline.tres" id="1_ty6sf"]
+[ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Art/materials/toonoutline.tres" id="1_ty6sf"]
 
 [resource]
 next_pass = ExtResource("1_ty6sf")

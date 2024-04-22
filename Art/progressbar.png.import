@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcn4nar6tp32"
-path="res://.godot/imported/knight_texture.png-0840d7fd68994ad405d96d8ac4393181.ctex"
+uid="uid://cab06kdl0ryoh"
+path="res://.godot/imported/progressbar.png-343b6dfdb003ef62295568f133e4c8e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/gltf/knight_texture.png"
-dest_files=["res://.godot/imported/knight_texture.png-0840d7fd68994ad405d96d8ac4393181.ctex"]
+source_file="res://Art/progressbar.png"
+dest_files=["res://.godot/imported/progressbar.png-343b6dfdb003ef62295568f133e4c8e1.ctex"]
 
 [params]
 
