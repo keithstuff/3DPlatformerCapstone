@@ -34,6 +34,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_m3g2m")
 
 [node name="Glow" type="Sprite2D" parent="HBoxContainer/Wisp1"]
+z_index = -1
 texture = ExtResource("4_wmu4b")
 
 [node name="Wisp2" type="Sprite2D" parent="HBoxContainer"]
@@ -42,6 +43,7 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_m3g2m")
 
 [node name="Glow" type="Sprite2D" parent="HBoxContainer/Wisp2"]
+z_index = -1
 texture = ExtResource("4_wmu4b")
 
 [node name="Wisp3" type="Sprite2D" parent="HBoxContainer"]
@@ -50,4 +52,5 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_m3g2m")
 
 [node name="Glow" type="Sprite2D" parent="HBoxContainer/Wisp3"]
+z_index = -1
 texture = ExtResource("4_wmu4b")

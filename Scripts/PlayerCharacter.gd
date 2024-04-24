@@ -14,8 +14,9 @@ var dash_bool := false
 @onready var animplayer := $AnimationPlayer
 @onready var level := get_parent()
 @onready var intrange := $InteractRange
-
-
+@onready var walkparticles = $walkparticles
+@onready var jumpparticles = $jumpparticles
+@onready var dashparticles = $dashparticles
 signal recall_wisp(num)
 signal assign_wisp_number(num)
 var wispcount = 0
@@ -55,7 +56,16 @@ func _physics_process(delta):
 	if not is_on_floor() and velocity.y >= TERM_FALL_VELOCITY and not dash_bool:
 		velocity.y -= gravity * delta
 	
-	
+	match is_on_floor():
+		true: 
+			match  velocity != Vector3(0,0,0):
+				true:
+					walkparticles.emitting = true
+				false:
+					walkparticles.emitting = false
+		false:
+			walkparticles.emitting = false
+		
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -70,6 +80,7 @@ func _physics_process(delta):
 			action_bool = false
 			velocity.y = JUMP_VELOCITY
 			animtree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+			jumpparticles.emitting = true
 		else:
 			pass
 	
@@ -84,6 +95,7 @@ func _physics_process(delta):
 		action_bool = false
 		dash_bool = true
 		velocity = Vector3(direction.x * DASH_SPEED, 0, direction.z * DASH_SPEED)
+		dashparticles.emitting = true
 	
 	if Input.is_action_just_pressed("wisp") and wisptotal < wispmax:
 		spawn_wisp()
@@ -93,9 +105,11 @@ func _physics_process(delta):
 	
 	#Movement
 	if dash_bool:
+		mesh.visible = false
 		dash_time_count += delta
 		if dash_time_count >= DASH_TIME:    
 			dash_bool = false
+			mesh.visible = true
 			velocity = Vector3(0, 0, 0)
 			dash_time_count = 0
 	if not dash_bool:

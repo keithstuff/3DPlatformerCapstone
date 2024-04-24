@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://kb784qg6gfr4"]
+[gd_scene load_steps=53 format=3 uid="uid://kb784qg6gfr4"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_a2pnt"]
 [ext_resource type="PackedScene" uid="uid://25kka5ucytfe" path="res://Scenes/character2.glb" id="2_y24un"]
@@ -6,6 +6,9 @@
 [ext_resource type="Material" uid="uid://br7rs3qwp5nmy" path="res://Art/materials/player_character.tres" id="3_w0fer"]
 [ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Art/materials/toonoutline.tres" id="4_5jqms"]
 [ext_resource type="Texture2D" uid="uid://b0p4tr2n126x0" path="res://Art/materials/whitecirlce.png" id="6_ymat6"]
+[ext_resource type="Texture2D" uid="uid://h6a233hvk3v" path="res://Art/Particles/Complex/smoke/smoke2_7.png" id="7_ejaa5"]
+[ext_resource type="Texture2D" uid="uid://bhefqc3cmwqwj" path="res://Art/Particles/Complex/impacts/impact_4.png" id="8_nxxoq"]
+[ext_resource type="Texture2D" uid="uid://5uh1ain80hw8" path="res://Art/Particles/Complex/flare/flare_12.png" id="9_hdwh7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2kv8i"]
 radius = 0.22958
@@ -1203,6 +1206,91 @@ node_connections = [&"output", 0, &"Animation"]
 [sub_resource type="BoxShape3D" id="BoxShape3D_hvv2b"]
 size = Vector3(3.01074, 2.31219, 3)
 
+[sub_resource type="Curve" id="Curve_4hkbq"]
+_data = [Vector2(0, 0.497854), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mnyrp"]
+curve = SubResource("Curve_4hkbq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwlqi"]
+emission_shape = 3
+emission_box_extents = Vector3(0.35, 0, 0)
+angle_min = -199.1
+angle_max = 268.6
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -0.5, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_mnyrp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tcrxr"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("7_ejaa5")
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_bqndv"]
+material = SubResource("StandardMaterial3D_tcrxr")
+
+[sub_resource type="Curve" id="Curve_54sgw"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lrq8h"]
+curve = SubResource("Curve_54sgw")
+
+[sub_resource type="Curve" id="Curve_habgn"]
+_data = [Vector2(0, 0.483516), 0.0, 0.0, 0, 0, Vector2(1, 0.996015), -0.265374, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jlooy"]
+curve = SubResource("Curve_habgn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tpjqq"]
+scale_curve = SubResource("CurveTexture_jlooy")
+alpha_curve = SubResource("CurveTexture_lrq8h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3nu03"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("8_nxxoq")
+disable_receive_shadows = true
+billboard_keep_scale = true
+proximity_fade_enabled = true
+proximity_fade_distance = 0.2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hk7k8"]
+material = SubResource("StandardMaterial3D_3nu03")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r2x5j"]
+emission_shape_scale = Vector3(0, 0, 0)
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+gravity = Vector3(0, 0, 0)
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exggm"]
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("9_hdwh7")
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_m0g4l"]
+material = SubResource("StandardMaterial3D_exggm")
+size = Vector2(1.5, 1.5)
+
 [node name="PlayerCharacter" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 axis_lock_angular_x = true
@@ -1352,6 +1440,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499385, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.656097, 0)
 shape = SubResource("BoxShape3D_hvv2b")
+
+[node name="walkparticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.005)
+emitting = false
+amount = 3
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_nwlqi")
+draw_pass_1 = SubResource("QuadMesh_bqndv")
+
+[node name="jumpparticles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.7
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_tpjqq")
+draw_pass_1 = SubResource("PlaneMesh_hk7k8")
+
+[node name="dashparticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.736, 0)
+emitting = false
+amount = 3
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_r2x5j")
+draw_pass_1 = SubResource("QuadMesh_m0g4l")
 
 [editable path="MeshInstance3D"]
 [editable path="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]

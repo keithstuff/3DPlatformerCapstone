@@ -599,6 +599,8 @@ script = ExtResource("5_ldtci")
 [node name="UI" parent="." instance=ExtResource("7_cdyw1")]
 mouse_filter = 2
 
+[connection signal="assign_wisp_number" from="PlayerCharacter" to="UI" method="_on_player_character_assign_wisp_number"]
+[connection signal="recall_wisp" from="PlayerCharacter" to="UI" method="_on_player_character_recall_wisp"]
 [connection signal="area_entered" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_exited"]
 
