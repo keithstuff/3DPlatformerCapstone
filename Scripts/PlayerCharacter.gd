@@ -1,10 +1,13 @@
 extends CharacterBody3D
 
+var rng = RandomNumberGenerator.new()
+
 var mouse_sensitivity := 0.001
 var twist_input := 0.0
 var pitch_input := 0.0
 var action_bool := true
 var dash_bool := false
+@onready var blink_timer := $BlinkTimer
 @onready var cooldown_timer := $ActionCooldown
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
@@ -70,7 +73,7 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		animtree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	
 	
 	# DOUBLE JUMP
@@ -79,10 +82,8 @@ func _physics_process(delta):
 			cooldown_timer.start(1)
 			action_bool = false
 			velocity.y = JUMP_VELOCITY
-			animtree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+			animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 			jumpparticles.emitting = true
-		else:
-			pass
 	
 	
 	#Get input direction and direction of camera
@@ -133,7 +134,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		action_bool = true
 		animtree["parameters/FallingBlend/blend_amount"] = 0
-		animtree["parameters/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
+		animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 		
 	if velocity.x != 0 or velocity.z != 0:
 		var lookdir = atan2(velocity.x, velocity.z)
@@ -178,6 +179,14 @@ func wisp_recall():
 			wispline += 1
 		wisptotal -= 1
 
+
+
+
+
+
+func _on_blink_timer_timeout():
+	animplayer.play("blink")
+	blink_timer.start(rng.randf_range(5, 10))
 
 
 

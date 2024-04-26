@@ -58,7 +58,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_nit5i")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_energy = 0.5
 omni_range = 15.0
-omni_attenuation = 0.31864
+omni_attenuation = 0.517635
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 

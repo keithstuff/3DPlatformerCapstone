@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=3 uid="uid://whahlk0dm84d"]
+[gd_scene load_steps=17 format=3 uid="uid://whahlk0dm84d"]
 
-[ext_resource type="PackedScene" uid="uid://bb3eg0bombkgb" path="res://Scenes/block.tscn" id="1_utsd0"]
 [ext_resource type="PackedScene" uid="uid://kb784qg6gfr4" path="res://Scenes/player_character.tscn" id="2_e0s1i"]
 [ext_resource type="PackedScene" uid="uid://cbxd5sl634j4t" path="res://Scenes/levelblock.tscn" id="3_8j8uh"]
 [ext_resource type="PackedScene" uid="uid://biec6lstjm5k2" path="res://Scenes/Ramp.tscn" id="4_o6exy"]
@@ -48,9 +47,6 @@ light_energy = 0.5
 shadow_enabled = true
 shadow_blur = 2.628
 
-[node name="Block" parent="." instance=ExtResource("1_utsd0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -13)
-
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.586433, 0)
 metadata/_edit_group_ = true
@@ -68,9 +64,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hse6u")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_e0s1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6513, 10.0128, -1.48911)
-
-[node name="HALO" parent="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.43, 0, 0, 0, 1, -0.0128976, 0.748688, 0.603818)
 
 [node name="InteractRange" parent="PlayerCharacter" index="7" groups=["player"]]
 
