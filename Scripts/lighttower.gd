@@ -1,6 +1,8 @@
 extends StaticBody3D
 
 @onready var player = $"../PlayerCharacter"
+signal tower_activated()
+
 var on_material = preload("res://Art/materials/tower1.tres")
 var off_material = preload("res://Art/materials/tower2.tres")
 @onready var body = $CollisionShape3D
@@ -33,6 +35,8 @@ func _process(delta):
 			$LightObject1.mesh.material = on_material
 			$LightObject2.mesh.material = on_material
 			self_area.queue_free()
+			tower_activated.emit()
+			
 		
 
 

@@ -10,10 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bhefqc3cmwqwj" path="res://Art/Particles/Complex/impacts/impact_4.png" id="8_nxxoq"]
 [ext_resource type="Texture2D" uid="uid://5uh1ain80hw8" path="res://Art/Particles/Complex/flare/flare_12.png" id="9_hdwh7"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2kv8i"]
-radius = 0.22958
-height = 1.57237
-
 [sub_resource type="Animation" id="Animation_lpjyc"]
 resource_name = "Idle"
 length = 2.0
@@ -1380,15 +1376,15 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_exggm")
 size = Vector2(1.5, 1.5)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2kv8i"]
+radius = 0.22958
+height = 1.57237
+
 [node name="PlayerCharacter" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_a2pnt")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000630257, 0.787782, -0.00316584)
-shape = SubResource("CapsuleShape3D_2kv8i")
 
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.444, 0)
@@ -1560,6 +1556,10 @@ draw_pass_1 = SubResource("QuadMesh_m0g4l")
 [node name="BlinkTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000630257, 0.787782, -0.00316584)
+shape = SubResource("CapsuleShape3D_2kv8i")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]

@@ -1,0 +1,310 @@
+[gd_scene load_steps=27 format=3 uid="uid://c4sh126wdyoy5"]
+
+[ext_resource type="Shader" uid="uid://c337fsfyr7k4r" path="res://portal.tres" id="1_3gymx"]
+[ext_resource type="Script" path="res://Scenes/black_hole.gd" id="1_eqbnj"]
+[ext_resource type="Texture2D" uid="uid://cuvgc3wte1eph" path="res://Art/Particles/Complex/lines/lines_5.png" id="2_1mx11"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h1jpm"]
+render_priority = 0
+shader = ExtResource("1_3gymx")
+shader_parameter/Color_Intensity = 7.0
+shader_parameter/Portal_Color = Color(1, 1, 1, 1)
+shader_parameter/Speed_paramater = Vector2(0.5, 3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t4kds"]
+size = Vector2(0, 0)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_edw4x"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504673, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_guwwh"]
+curve = SubResource("Curve_edw4x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bkj7d"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.1
+emission_ring_radius = 7.0
+emission_ring_inner_radius = 6.0
+angular_velocity_min = 60.0
+angular_velocity_max = 60.0
+radial_velocity_min = -2.0
+radial_velocity_max = -2.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -40.0
+radial_accel_max = -40.0
+tangential_accel_min = 40.0
+tangential_accel_max = 40.0
+damping_min = 10.0
+damping_max = 20.0
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_guwwh")
+
+[sub_resource type="Curve" id="Curve_6qg6i"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.46748, 0.868132), 0.0, 0.0, 0, 0, Vector2(1, 0.637363), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bqu6"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_1mx11")
+disable_receive_shadows = true
+billboard_mode = 1
+billboard_keep_scale = true
+grow_amount = 2.918
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_nj8ib"]
+material = SubResource("StandardMaterial3D_3bqu6")
+size = 0.1
+sections = 3
+curve = SubResource("Curve_6qg6i")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_umsnf"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.1
+emission_ring_radius = 7.0
+emission_ring_inner_radius = 6.0
+angular_velocity_min = 60.0
+angular_velocity_max = 60.0
+radial_velocity_min = -2.0
+radial_velocity_max = -2.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -40.0
+radial_accel_max = -40.0
+tangential_accel_min = 40.0
+tangential_accel_max = 40.0
+damping_min = 10.0
+damping_max = 20.0
+attractor_interaction_enabled = false
+scale_curve = SubResource("CurveTexture_guwwh")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_82ykg"]
+
+[sub_resource type="Animation" id="Animation_msnpw"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 10, -0.4, 25, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 10, -1, 23, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="Animation" id="Animation_m40de"]
+resource_name = "notvisible"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4u3yy"]
+resource_name = "visible"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_42p81"]
+resource_name = "disappear"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.4, 25, 0.4, 16, 10, -0.9, 22, 0.213058, -12, 0, -0.7, 84, 0.4, 57),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -1, 23, 0.8, 70, 10, -0.7, 5, 0.5, 6, 0, -0.8, 79, 0.2, -2),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_black_hole_open"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qivq"]
+_data = {
+"appear": SubResource("Animation_msnpw"),
+"disappear": SubResource("Animation_42p81"),
+"notvisible": SubResource("Animation_m40de"),
+"visible": SubResource("Animation_4u3yy")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lc2qe"]
+animation = &"notvisible"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wdoyr"]
+animation = &"appear"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gp2cg"]
+animation = &"disappear"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jsyhq"]
+animation = &"visible"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_2fyqu"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_58084"]
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ueu34"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7l3jp"]
+graph_offset = Vector2(-412.595, 11.1273)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_jsyhq")
+nodes/Animation/position = Vector2(-680, 320)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lc2qe")
+"nodes/Animation 2/position" = Vector2(-680, 140)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_wdoyr")
+"nodes/Animation 3/position" = Vector2(-140, 280)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_gp2cg")
+"nodes/Animation 4/position" = Vector2(240, 280)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_2fyqu")
+nodes/Blend2/position = Vector2(-320, 140)
+nodes/OneShot/node = SubResource("AnimationNodeOneShot_ueu34")
+nodes/OneShot/position = Vector2(60, 140)
+"nodes/OneShot 2/node" = SubResource("AnimationNodeOneShot_58084")
+"nodes/OneShot 2/position" = Vector2(440, 140)
+nodes/output/position = Vector2(680, 160)
+node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"OneShot", 0, &"Blend2", &"OneShot", 1, &"Animation 3", &"OneShot 2", 0, &"OneShot", &"OneShot 2", 1, &"Animation 4", &"output", 0, &"OneShot 2"]
+
+[node name="Black hole" type="Node3D"]
+script = ExtResource("1_eqbnj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_h1jpm")
+mesh = SubResource("PlaneMesh_t4kds")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+visible = false
+cast_shadow = 0
+amount = 100
+lifetime = 0.3
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_bkj7d")
+draw_pass_1 = SubResource("RibbonTrailMesh_nj8ib")
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="."]
+visible = false
+cast_shadow = 0
+amount = 100
+lifetime = 0.3
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_umsnf")
+draw_pass_1 = SubResource("RibbonTrailMesh_nj8ib")
+
+[node name="BlackHoleGravity" type="Area3D" parent="."]
+transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
+monitoring = false
+monitorable = false
+gravity_space_override = 3
+gravity_point = true
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
+gravity = 15.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BlackHoleGravity"]
+shape = SubResource("SphereShape3D_82ykg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1qivq")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1qivq")
+}
+tree_root = SubResource("AnimationNodeBlendTree_7l3jp")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Blend2/blend_amount = 0.0
+parameters/OneShot/active = false
+parameters/OneShot/internal_active = false
+parameters/OneShot/request = 0
+"parameters/OneShot 2/active" = false
+"parameters/OneShot 2/internal_active" = false
+"parameters/OneShot 2/request" = 0

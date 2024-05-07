@@ -7,6 +7,9 @@ var twist_input := 0.0
 var pitch_input := 0.0
 var action_bool := true
 var dash_bool := false
+
+var cutscene := false
+
 @onready var blink_timer := $BlinkTimer
 @onready var cooldown_timer := $ActionCooldown
 @onready var twist_pivot := $TwistPivot
@@ -20,6 +23,9 @@ var dash_bool := false
 @onready var walkparticles = $walkparticles
 @onready var jumpparticles = $jumpparticles
 @onready var dashparticles = $dashparticles
+
+@onready var blackhole = $"../BlackHole"
+
 signal recall_wisp(num)
 signal assign_wisp_number(num)
 var wispcount = 0
@@ -35,8 +41,13 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 10
 var angular_acceleration = 7
 const TERM_FALL_VELOCITY = -15
+signal levelend
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_cancel"):
@@ -71,13 +82,13 @@ func _physics_process(delta):
 		
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not cutscene:
 		velocity.y = JUMP_VELOCITY
 		animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	
 	
 	# DOUBLE JUMP
-	if Input.is_action_just_pressed("jump") and not is_on_floor():
+	if Input.is_action_just_pressed("jump") and not is_on_floor() and not cutscene:
 		if action_bool == true and cooldown_timer.time_left == 0:
 			cooldown_timer.start(1)
 			action_bool = false
@@ -91,7 +102,7 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y) * twist_pivot.basis.inverse()).normalized()
 	
 	#DASH
-	if Input.is_action_just_pressed("dash") and action_bool == true and cooldown_timer.time_left == 0 and direction:
+	if Input.is_action_just_pressed("dash") and action_bool == true and cooldown_timer.time_left == 0 and direction and not cutscene:
 		cooldown_timer.start(1)
 		action_bool = false
 		dash_bool = true
@@ -113,7 +124,7 @@ func _physics_process(delta):
 			mesh.visible = true
 			velocity = Vector3(0, 0, 0)
 			dash_time_count = 0
-	if not dash_bool:
+	if not dash_bool and not cutscene:
 		if direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
@@ -126,7 +137,7 @@ func _physics_process(delta):
 	if(abs(input_dir.x) + abs(input_dir.y) >= 1) and is_on_floor():
 		animtree["parameters/Blend2/blend_amount"] = 1.0
 	elif not is_on_floor():
-		animtree["parameters/FallingBlend/blend_amount"] = 1
+		animtree["parameters/FallingBlend/blend_amount"] = 1.0
 	else:
 		animtree["parameters/Blend2/blend_amount"] = (abs(input_dir.x) + abs(input_dir.y))/2
 		
@@ -150,8 +161,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			twist_input = - event.relative.x * mouse_sensitivity
 			pitch_input = - event.relative.y * mouse_sensitivity
 #Mouse
-func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 
 
 func spawn_wisp():
@@ -190,3 +200,18 @@ func _on_blink_timer_timeout():
 
 
 
+
+
+func _on_game_manager_level_completed():
+	cutscene = true
+	
+
+
+func _on_cutscene_timer_timeout():
+	camera.make_current()
+	cutscene = false
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", blackhole.position, 3)
+	tween.parallel().tween_property(mesh, "scale", Vector3(0,0,0),3)
+	levelend.emit()
+	

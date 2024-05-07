@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://whahlk0dm84d"]
+[gd_scene load_steps=18 format=3 uid="uid://whahlk0dm84d"]
 
 [ext_resource type="PackedScene" uid="uid://kb784qg6gfr4" path="res://Scenes/player_character.tscn" id="2_e0s1i"]
 [ext_resource type="PackedScene" uid="uid://cbxd5sl634j4t" path="res://Scenes/levelblock.tscn" id="3_8j8uh"]
 [ext_resource type="PackedScene" uid="uid://biec6lstjm5k2" path="res://Scenes/Ramp.tscn" id="4_o6exy"]
-[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="5_ldtci"]
+[ext_resource type="PackedScene" uid="uid://b5pyggvjd1yfl" path="res://Scenes/game_manager.tscn" id="5_yysev"]
 [ext_resource type="PackedScene" uid="uid://c75ik84c50bhd" path="res://Scenes/tower_1.tscn" id="6_6wgvn"]
 [ext_resource type="PackedScene" uid="uid://b36xbv1t8d61f" path="res://Scenes/UI.tscn" id="7_cdyw1"]
+[ext_resource type="PackedScene" uid="uid://c4sh126wdyoy5" path="res://Scenes/black_hole.tscn" id="7_l7v7f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxtko"]
 
@@ -42,10 +43,20 @@ rim = 0.35
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998948, 0.00423562, -0.0456535, 0.0444442, -0.334093, 0.941492, -0.0112647, -0.942531, -0.33393, 2.7231, 26.385, -23.6669)
-visible = false
 light_energy = 0.5
 shadow_enabled = true
 shadow_blur = 2.628
+
+[node name="GameManager" parent="." instance=ExtResource("5_yysev")]
+
+[node name="CutsceneCamera" parent="GameManager" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.883471, -0.468485, 0, 0.468485, 0.883471, 0, 20, 30)
+
+[node name="UI" parent="." instance=ExtResource("7_cdyw1")]
+mouse_filter = 2
+
+[node name="BlackHole" parent="." instance=ExtResource("7_l7v7f")]
+transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.82236, 29.6909, -0.665981)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.586433, 0)
@@ -63,9 +74,12 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_hse6u")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_e0s1i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6513, 10.0128, -1.48911)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7125, 4.83035, -0.342424)
 
-[node name="InteractRange" parent="PlayerCharacter" index="7" groups=["player"]]
+[node name="HALO" parent="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.43, 0, 0, 0, 1, -0.0128976, 0.748688, 0.603818)
+
+[node name="InteractRange" parent="PlayerCharacter" index="6" groups=["player"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_43ybq")
@@ -586,17 +600,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8736, 13.094, 39.1222)
 [node name="Tower5" parent="." instance=ExtResource("6_6wgvn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5997, 15.5434, -34.1908)
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("5_ldtci")
-
-[node name="UI" parent="." instance=ExtResource("7_cdyw1")]
-mouse_filter = 2
-
+[connection signal="level_completed" from="GameManager" to="BlackHole" method="_on_game_manager_level_completed"]
+[connection signal="level_completed" from="GameManager" to="PlayerCharacter" method="_on_game_manager_level_completed"]
+[connection signal="timeout" from="GameManager/CutsceneTimer" to="BlackHole" method="_on_cutscene_timer_timeout"]
+[connection signal="timeout" from="GameManager/CutsceneTimer" to="PlayerCharacter" method="_on_cutscene_timer_timeout"]
 [connection signal="assign_wisp_number" from="PlayerCharacter" to="UI" method="_on_player_character_assign_wisp_number"]
 [connection signal="recall_wisp" from="PlayerCharacter" to="UI" method="_on_player_character_recall_wisp"]
 [connection signal="area_entered" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_exited"]
+[connection signal="tower_activated" from="Tower1" to="GameManager" method="_on_tower_1_tower_activated"]
+[connection signal="tower_activated" from="Tower2" to="GameManager" method="_on_tower_2_tower_activated"]
+[connection signal="tower_activated" from="Tower3" to="GameManager" method="_on_tower_3_tower_activated"]
+[connection signal="tower_activated" from="Tower4" to="GameManager" method="_on_tower_4_tower_activated"]
+[connection signal="tower_activated" from="Tower5" to="GameManager" method="_on_tower_5_tower_activated"]
 
+[editable path="GameManager"]
 [editable path="PlayerCharacter"]
 [editable path="PlayerCharacter/MeshInstance3D"]
 [editable path="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]
