@@ -48,6 +48,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	visible = false
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_cancel"):
@@ -213,5 +214,18 @@ func _on_cutscene_timer_timeout():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", blackhole.position, 3)
 	tween.parallel().tween_property(mesh, "scale", Vector3(0,0,0),3)
+	tween.chain().tween_callback(end_of_the_road)
+	
+
+
+func _on_black_hole_blackholeopen():
+	visible = true
+	position = blackhole.position
+
+
+func _on_black_hole_blackholeclose():
+	camera.make_current()
+
+func end_of_the_road():
 	levelend.emit()
 	

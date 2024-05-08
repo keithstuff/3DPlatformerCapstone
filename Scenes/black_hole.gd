@@ -5,7 +5,8 @@ extends Node3D
 @onready var anim = $AnimationPlayer
 @onready var animtree = $AnimationTree
 var animationfired = false
-
+signal blackholeopen
+signal blackholeclose
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 	particles2.visible = false
 	$BlackHoleGravity.visible = false
 	animtree["parameters/Blend2/blend_amount"] = 1
+	animtree["parameters/OneShot 2/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
 
 func _on_cutscene_timer_timeout():
@@ -29,6 +31,7 @@ func _on_game_manager_level_completed():
 		animationfired = true
 
 func _black_hole_open():
-	animtree["parameters/OneShot2/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	blackholeopen.emit()
+func _black_hole_close():
 	animtree["parameters/Blend2/blend_amount"] = 0
-	
+	blackholeclose.emit()

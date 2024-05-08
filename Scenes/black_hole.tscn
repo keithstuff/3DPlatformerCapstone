@@ -111,6 +111,49 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2)
 }
 
+[sub_resource type="Animation" id="Animation_42p81"]
+resource_name = "disappear"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:size:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.4, 25, 0.4, 16, 10, -0.9, 22, 0.213058, -12, 0, -0.7, 84, 0.4, 57),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:size:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -1, 23, 0.8, 70, 10, -0.7, 5, 0.5, 6, 0, -0.8, 79, 0.2, -2),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_black_hole_open"
+}, {
+"args": [],
+"method": &"_black_hole_close"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_m40de"]
 resource_name = "notvisible"
 tracks/0/type = "bezier"
@@ -161,46 +204,6 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_42p81"]
-resource_name = "disappear"
-length = 2.0
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:mesh:size:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.4, 25, 0.4, 16, 10, -0.9, 22, 0.213058, -12, 0, -0.7, 84, 0.4, 57),
-"times": PackedFloat32Array(0, 1, 2)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:mesh:size:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -1, 23, 0.8, 70, 10, -0.7, 5, 0.5, 6, 0, -0.8, 79, 0.2, -2),
-"times": PackedFloat32Array(0, 1, 2)
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_black_hole_open"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1qivq"]
 _data = {
 "appear": SubResource("Animation_msnpw"),
@@ -228,7 +231,7 @@ animation = &"visible"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ueu34"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_7l3jp"]
-graph_offset = Vector2(-412.595, 11.1273)
+graph_offset = Vector2(-131.02, 176.219)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_jsyhq")
 nodes/Animation/position = Vector2(-680, 320)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_lc2qe")

@@ -43,6 +43,7 @@ rim = 0.35
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998948, 0.00423562, -0.0456535, 0.0444442, -0.334093, 0.941492, -0.0112647, -0.942531, -0.33393, 2.7231, 26.385, -23.6669)
+visible = false
 light_energy = 0.5
 shadow_enabled = true
 shadow_blur = 2.628
@@ -604,7 +605,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5997, 15.5434, -34.1908)
 [connection signal="level_completed" from="GameManager" to="PlayerCharacter" method="_on_game_manager_level_completed"]
 [connection signal="timeout" from="GameManager/CutsceneTimer" to="BlackHole" method="_on_cutscene_timer_timeout"]
 [connection signal="timeout" from="GameManager/CutsceneTimer" to="PlayerCharacter" method="_on_cutscene_timer_timeout"]
+[connection signal="blackholeclose" from="BlackHole" to="UI" method="_on_black_hole_blackholeclose"]
+[connection signal="blackholeclose" from="BlackHole" to="PlayerCharacter" method="_on_black_hole_blackholeclose"]
+[connection signal="blackholeopen" from="BlackHole" to="PlayerCharacter" method="_on_black_hole_blackholeopen"]
 [connection signal="assign_wisp_number" from="PlayerCharacter" to="UI" method="_on_player_character_assign_wisp_number"]
+[connection signal="levelend" from="PlayerCharacter" to="UI" method="_on_player_character_levelend"]
 [connection signal="recall_wisp" from="PlayerCharacter" to="UI" method="_on_player_character_recall_wisp"]
 [connection signal="area_entered" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_entered"]
 [connection signal="area_exited" from="PlayerCharacter/InteractRange" to="UI" method="_on_interact_range_area_exited"]
