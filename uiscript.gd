@@ -67,8 +67,8 @@ func timer():
 func _on_player_character_levelend():
 	endscreen.visible = true
 	onscreen.visible = false
+	level_complete = true
 
 
 func _on_black_hole_blackholeclose():
 	onscreen.visible = true
-	level_complete = true

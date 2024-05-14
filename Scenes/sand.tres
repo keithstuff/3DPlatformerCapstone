@@ -1,0 +1,60 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://d0dkk7lk8kqby"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_bgyx4"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_b7yb6"]
+parameter_name = "ColorParameter"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_yxw57"]
+parameter_name = "FloatParameter"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_svaqu"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+op_type = 2
+operator = 2
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float FloatParameter;
+uniform vec4 ColorParameter : source_color;
+
+
+
+void fragment() {
+// FloatParameter:6
+	float n_out6p0 = FloatParameter;
+
+
+// ColorParameter:5
+	vec4 n_out5p0 = ColorParameter;
+
+
+// VectorOp:7
+	vec4 n_out7p0 = vec4(n_out6p0) * n_out5p0;
+
+
+// VectorOp:4
+	vec4 n_in4p0 = vec4(0.00000, 0.00000, 0.00000, 0.00000);
+	vec4 n_out4p0 = n_in4p0 * n_out7p0;
+
+
+// Output:0
+	ALBEDO = vec3(n_out4p0.xyz);
+
+
+}
+"
+nodes/fragment/4/node = SubResource("VisualShaderNodeVectorOp_bgyx4")
+nodes/fragment/4/position = Vector2(40, 500)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorParameter_b7yb6")
+nodes/fragment/5/position = Vector2(-740, 420)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_yxw57")
+nodes/fragment/6/position = Vector2(-680, 200)
+nodes/fragment/7/node = SubResource("VisualShaderNodeVectorOp_svaqu")
+nodes/fragment/7/position = Vector2(-406.99, 332.856)
+nodes/fragment/connections = PackedInt32Array(4, 0, 0, 0, 6, 0, 7, 0, 5, 0, 7, 1, 7, 0, 4, 1)

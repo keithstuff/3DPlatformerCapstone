@@ -1,18 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://whahlk0dm84d"]
+[gd_scene load_steps=15 format=3 uid="uid://whahlk0dm84d"]
 
 [ext_resource type="PackedScene" uid="uid://kb784qg6gfr4" path="res://Scenes/player_character.tscn" id="2_e0s1i"]
 [ext_resource type="PackedScene" uid="uid://cbxd5sl634j4t" path="res://Scenes/levelblock.tscn" id="3_8j8uh"]
+[ext_resource type="PackedScene" uid="uid://7skfk4aef1ev" path="res://Scenes/floor.tscn" id="4_lmhlp"]
 [ext_resource type="PackedScene" uid="uid://biec6lstjm5k2" path="res://Scenes/Ramp.tscn" id="4_o6exy"]
 [ext_resource type="PackedScene" uid="uid://b5pyggvjd1yfl" path="res://Scenes/game_manager.tscn" id="5_yysev"]
 [ext_resource type="PackedScene" uid="uid://c75ik84c50bhd" path="res://Scenes/tower_1.tscn" id="6_6wgvn"]
 [ext_resource type="PackedScene" uid="uid://b36xbv1t8d61f" path="res://Scenes/UI.tscn" id="7_cdyw1"]
 [ext_resource type="PackedScene" uid="uid://c4sh126wdyoy5" path="res://Scenes/black_hole.tscn" id="7_l7v7f"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vxtko"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_t4lnc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hse6u"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yrg5f"]
 rayleigh_color = Color(0, 0, 0, 1)
@@ -30,8 +25,6 @@ sky = SubResource("Sky_dtlks")
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5lmh"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_5oakv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3xwg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wixer"]
 shading_mode = 2
@@ -59,20 +52,7 @@ mouse_filter = 2
 [node name="BlackHole" parent="." instance=ExtResource("7_l7v7f")]
 transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.82236, 29.6909, -0.665981)
 
-[node name="Floor" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.586433, 0)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
-shape = SubResource("BoxShape3D_vxtko")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
-mesh = SubResource("BoxMesh_t4lnc")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_hse6u")
+[node name="Floor" parent="." instance=ExtResource("4_lmhlp")]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_e0s1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7125, 4.83035, -0.342424)
@@ -159,17 +139,6 @@ transform = Transform3D(17.2428, 0, 0, 0, 7.46028, 0, 0, 0, 16.7125, 23.4, 3.552
 
 [node name="Ramp2" parent="." instance=ExtResource("4_o6exy")]
 transform = Transform3D(-0.150073, 0, -13.837, 0, 7.46028, 0, 19.6761, 0, -0.105538, -35.3816, 11.0643, 37.7938)
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(6.38621, 0, 0, 0, 6.78917, 0, 0, 0, 3.83922, 2.93569, -2.30718, -0.151617)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
-shape = SubResource("BoxShape3D_v5lmh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-mesh = SubResource("BoxMesh_5oakv")
-surface_material_override/0 = SubResource("StandardMaterial3D_i3xwg")
 
 [node name="Walls" type="StaticBody3D" parent="."]
 
@@ -587,7 +556,7 @@ mesh = SubResource("BoxMesh_5oakv")
 surface_material_override/0 = SubResource("StandardMaterial3D_wixer")
 
 [node name="Tower1" parent="." instance=ExtResource("6_6wgvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99388, 2.25152, -0.0914834)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99388, 0.820444, -0.0914834)
 
 [node name="Tower2" parent="." instance=ExtResource("6_6wgvn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.4367, 8.12726, -35.3456)

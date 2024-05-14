@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck8a381wq4k3o"]
+
+[ext_resource type="Texture2D" uid="uid://b2c42t7867yxc" path="res://icon.svg" id="1_6mbp3"]
+[ext_resource type="Texture2D" uid="uid://b14t1vwd8sjon" path="res://Art/Solid_black.png" id="2_co0sv"]
+[ext_resource type="FontFile" uid="uid://jxme2ljt15wg" path="res://Art/Fonts/Exo-VariableFont_wght.ttf" id="3_yjc2j"]
+[ext_resource type="Texture2D" uid="uid://cx05gmel4nkx5" path="res://Art/OIG3.jpg" id="4_mdi5c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbn54"]
+font = ExtResource("3_yjc2j")
+font_size = 80
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.167
+anchor_top = 0.907
+anchor_right = 0.837
+anchor_bottom = 1.65
+offset_left = 1620.62
+offset_top = -241.736
+offset_right = 1620.61
+offset_bottom = -241.705
+text = "bluh"
+icon = ExtResource("1_6mbp3")
+icon_alignment = 1
+
+[node name="BlackBackground" type="Sprite2D" parent="."]
+position = Vector2(596, 330)
+scale = Vector2(6.285, 3.605)
+texture = ExtResource("2_co0sv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -306.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EMPOINT"
+label_settings = SubResource("LabelSettings_tbn54")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 202.0
+offset_right = 680.0
+offset_bottom = 385.0
+texture = ExtResource("4_mdi5c")
+expand_mode = 1
