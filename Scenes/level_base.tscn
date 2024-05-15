@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2veceqmim4cj"]
+
+[ext_resource type="Script" path="res://Scripts/LevelBase.gd" id="1_fqj63"]
+[ext_resource type="PackedScene" uid="uid://ck8a381wq4k3o" path="res://Scenes/mainmenu.tscn" id="2_tkvvi"]
+
+[node name="LevelBase" type="Node3D"]
+script = ExtResource("1_fqj63")
+
+[node name="MainMenu" parent="." instance=ExtResource("2_tkvvi")]
+
+[connection signal="begin" from="MainMenu" to="." method="_on_main_menu_begin"]

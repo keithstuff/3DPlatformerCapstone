@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://x10w43koek8p"]
 
-[ext_resource type="Script" path="res://Scripts/light_wisp.gd" id="1_k05eh"]
-[ext_resource type="Texture2D" uid="uid://cixi16hc5myeq" path="res://Art/particle_sprite_smoke.webp" id="1_nc7wy"]
+[ext_resource type="Script" path="res://Scripts/light_wisp.gd" id="1_xypw2"]
+[ext_resource type="Texture2D" uid="uid://cixi16hc5myeq" path="res://Art/particle_sprite_smoke.webp" id="2_xfhgy"]
 
 [sub_resource type="Curve" id="Curve_6kvaa"]
 max_value = 3.0
@@ -24,7 +24,7 @@ anim_speed_max = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kt70"]
 transparency = 1
 shading_mode = 0
-albedo_texture = ExtResource("1_nc7wy")
+albedo_texture = ExtResource("2_xfhgy")
 billboard_mode = 3
 particles_anim_h_frames = 8
 particles_anim_v_frames = 8
@@ -41,7 +41,7 @@ emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 3.27
 
 [node name="LightWisp" type="Node3D"]
-script = ExtResource("1_k05eh")
+script = ExtResource("1_xypw2")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 amount = 10

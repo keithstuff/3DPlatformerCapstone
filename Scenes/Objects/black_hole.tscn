@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://c4sh126wdyoy5"]
 
 [ext_resource type="Shader" uid="uid://c337fsfyr7k4r" path="res://portal.tres" id="1_3gymx"]
-[ext_resource type="Script" path="res://Scenes/black_hole.gd" id="1_eqbnj"]
+[ext_resource type="Script" path="res://Scripts/black_hole.gd" id="1_eqbnj"]
 [ext_resource type="Texture2D" uid="uid://cuvgc3wte1eph" path="res://Art/Particles/Complex/lines/lines_5.png" id="2_1mx11"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1jpm"]

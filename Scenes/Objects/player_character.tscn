@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_a2pnt"]
 [ext_resource type="PackedScene" uid="uid://25kka5ucytfe" path="res://Scenes/character2.glb" id="2_y24un"]
-[ext_resource type="PackedScene" uid="uid://crkcyyimyolqf" path="res://Scenes/HALO.glb" id="3_eekte"]
+[ext_resource type="PackedScene" uid="uid://crkcyyimyolqf" path="res://Scenes/Objects/HALO.glb" id="3_eekte"]
 [ext_resource type="Material" uid="uid://br7rs3qwp5nmy" path="res://Art/materials/player_character.tres" id="3_w0fer"]
 [ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Art/materials/toonoutline.tres" id="4_5jqms"]
 [ext_resource type="Texture2D" uid="uid://b0p4tr2n126x0" path="res://Art/materials/whitecirlce.png" id="6_ymat6"]
@@ -1419,6 +1419,7 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
 transform = Transform3D(1, 0, -9.23706e-14, 0, 1, 0, 9.23706e-14, 0, 1, 0, 0, 0)
 bones/0/position = Vector3(0, -1.33441, 0)
 bones/0/rotation = Quaternion(-7.34796e-05, 0.00485682, 0.00269492, 0.999985)
+bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-1.9088e-09, 1.42619, -8.00355e-11)
 bones/1/rotation = Quaternion(7.3473e-05, -0.00485682, -0.00269493, 0.999985)
 bones/1/scale = Vector3(1, 1, 1)

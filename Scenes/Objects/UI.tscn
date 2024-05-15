@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b36xbv1t8d61f"]
 
-[ext_resource type="Script" path="res://uiscript.gd" id="1_j30fj"]
+[ext_resource type="Script" path="res://Scripts/uiscript.gd" id="1_j30fj"]
 [ext_resource type="Texture2D" uid="uid://i330juo2v5w2" path="res://Art/Keys/F_Key_Light.png" id="2_i3gnk"]
 [ext_resource type="Texture2D" uid="uid://cxhw0l258yo40" path="res://Art/whitebox.png" id="2_n7hny"]
 [ext_resource type="Texture2D" uid="uid://cab06kdl0ryoh" path="res://Art/progressbar.png" id="3_m3g2m"]

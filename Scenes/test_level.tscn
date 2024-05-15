@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://whahlk0dm84d"]
 
-[ext_resource type="PackedScene" uid="uid://kb784qg6gfr4" path="res://Scenes/player_character.tscn" id="2_e0s1i"]
-[ext_resource type="PackedScene" uid="uid://cbxd5sl634j4t" path="res://Scenes/levelblock.tscn" id="3_8j8uh"]
-[ext_resource type="PackedScene" uid="uid://7skfk4aef1ev" path="res://Scenes/floor.tscn" id="4_lmhlp"]
-[ext_resource type="PackedScene" uid="uid://biec6lstjm5k2" path="res://Scenes/Ramp.tscn" id="4_o6exy"]
-[ext_resource type="PackedScene" uid="uid://b5pyggvjd1yfl" path="res://Scenes/game_manager.tscn" id="5_yysev"]
-[ext_resource type="PackedScene" uid="uid://c75ik84c50bhd" path="res://Scenes/tower_1.tscn" id="6_6wgvn"]
-[ext_resource type="PackedScene" uid="uid://b36xbv1t8d61f" path="res://Scenes/UI.tscn" id="7_cdyw1"]
-[ext_resource type="PackedScene" uid="uid://c4sh126wdyoy5" path="res://Scenes/black_hole.tscn" id="7_l7v7f"]
+[ext_resource type="PackedScene" uid="uid://kb784qg6gfr4" path="res://Scenes/Objects/player_character.tscn" id="2_e0s1i"]
+[ext_resource type="PackedScene" uid="uid://cbxd5sl634j4t" path="res://Scenes/Objects/levelblock.tscn" id="3_8j8uh"]
+[ext_resource type="PackedScene" uid="uid://7skfk4aef1ev" path="res://Scenes/Objects/floor.tscn" id="4_lmhlp"]
+[ext_resource type="PackedScene" uid="uid://biec6lstjm5k2" path="res://Scenes/Objects/Ramp.tscn" id="4_o6exy"]
+[ext_resource type="PackedScene" uid="uid://b5pyggvjd1yfl" path="res://Scenes/Objects/game_manager.tscn" id="5_yysev"]
+[ext_resource type="PackedScene" uid="uid://c75ik84c50bhd" path="res://Scenes/Objects/tower_1.tscn" id="6_6wgvn"]
+[ext_resource type="PackedScene" uid="uid://b36xbv1t8d61f" path="res://Scenes/Objects/UI.tscn" id="7_cdyw1"]
+[ext_resource type="PackedScene" uid="uid://c4sh126wdyoy5" path="res://Scenes/Objects/black_hole.tscn" id="7_l7v7f"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_yrg5f"]
 rayleigh_color = Color(0, 0, 0, 1)
@@ -58,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.82236, 29.6909, -0.6659
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7125, 4.83035, -0.342424)
 
 [node name="HALO" parent="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.43, 0, 0, 0, 1, -0.0128976, 0.748688, 0.603818)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="InteractRange" parent="PlayerCharacter" index="6" groups=["player"]]
 

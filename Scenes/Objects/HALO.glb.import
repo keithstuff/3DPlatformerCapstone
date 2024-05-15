@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://crkcyyimyolqf"
-path="res://.godot/imported/HALO.glb-087b4996b092b37397758eb51c1c2b38.scn"
+path="res://.godot/imported/HALO.glb-15dbf9120b0032db0e25b83c8f64b5c9.scn"
 
 [deps]
 
-source_file="res://Scenes/HALO.glb"
-dest_files=["res://.godot/imported/HALO.glb-087b4996b092b37397758eb51c1c2b38.scn"]
+source_file="res://Scenes/Objects/HALO.glb"
+dest_files=["res://.godot/imported/HALO.glb-15dbf9120b0032db0e25b83c8f64b5c9.scn"]
 
 [params]
 

@@ -167,7 +167,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func spawn_wisp():
 	if wisptotal < 3:
-		var wisp_scene = preload("res://Scenes/light_wisp.tscn")
+		var wisp_scene = preload("res://Scenes/Objects/light_wisp.tscn")
 		var wisp = wisp_scene.instantiate()
 		wisp.position = Vector3(position.x, position.y + 0.5, position.z)
 		level.add_child(wisp)
