@@ -36,7 +36,6 @@ rim = 0.35
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998948, 0.00423562, -0.0456535, 0.0444442, -0.334093, 0.941492, -0.0112647, -0.942531, -0.33393, 2.7231, 26.385, -23.6669)
-visible = false
 light_energy = 0.5
 shadow_enabled = true
 shadow_blur = 2.628
@@ -60,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7125, 4.83035, -0.342424)
 [node name="HALO" parent="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="InteractRange" parent="PlayerCharacter" index="6" groups=["player"]]
+[node name="InteractRange" parent="PlayerCharacter" index="7" groups=["player"]]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_43ybq")

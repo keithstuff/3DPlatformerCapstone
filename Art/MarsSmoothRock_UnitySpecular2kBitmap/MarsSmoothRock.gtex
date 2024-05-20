@@ -1,0 +1,100 @@
+{
+	"material":
+	{
+		"name": "MarsSmoothRock",
+		"shader": "gt_product",
+		"type": "material",
+		"tiling": 1,
+		"texturemaps":
+		{
+			"basecolor": 
+			{
+				"path": "Textures/MarsSmoothRock_basecolor.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"roughness":
+			{
+				"path": "Textures/MarsSmoothRock_roughness.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"metallic": 
+			{
+				"path": "Textures/MarsSmoothRock_metallic.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"albedo": 
+			{
+				"path": "Textures/MarsSmoothRock_albedo.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"specular":
+			{
+				"path": "Textures/MarsSmoothRock_specular.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"glossiness":
+			{
+				"path": "Textures/MarsSmoothRock_glossiness.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"normal":
+			{
+				"path": "Textures/MarsSmoothRock_normal.png",
+				"maxsize": 2048,
+				"compression": "normal",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"ambientocclusion":
+			{
+				"path": "Textures/MarsSmoothRock_ambientocclusion.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"height":
+			{
+				"path": "Textures/MarsSmoothRock_height.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"emissive":
+			{
+				"path": "Textures/MarsSmoothRock_emissive.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			},
+			"opacity":
+			{
+				"path": "Textures/MarsSmoothRock_opacity.png",
+				"maxsize": 2048,
+				"compression": "default",
+				"colorchannel": "rgb",
+				"colorspace": "srgb"
+			}
+		}
+	}
+}

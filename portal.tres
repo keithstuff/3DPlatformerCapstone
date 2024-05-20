@@ -1,5 +1,6 @@
-[gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://c337fsfyr7k4r"]
+[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://c337fsfyr7k4r"]
 
+[ext_resource type="Texture2D" uid="uid://cfwu2n10gcgkb" path="res://Art/Screenshot 2024-05-20 121400.png" id="1_phco6"]
 [ext_resource type="Texture2D" uid="uid://cscq3xoct8cca" path="res://Art/T_VFX_CircleFit1.png" id="2_wvl6i"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_gom4l"]
@@ -14,11 +15,10 @@ operator = 2
 parameter_name = "Speed_paramater"
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_hoqga"]
-texture = ExtResource("2_wvl6i")
+texture = ExtResource("1_phco6")
 texture_type = 1
 
 [sub_resource type="VisualShaderNodeUVPolarCoord" id="VisualShaderNodeUVPolarCoord_hs014"]
-default_input_values = [1, Vector2(0.5, 0.5), 2, 3.0, 3, 1.0]
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_v74r0"]
 
@@ -86,7 +86,7 @@ void fragment() {
 	vec2 n_out3p0;
 // UVPolarCoord:3
 	vec2 n_in3p1 = vec2(0.50000, 0.50000);
-	float n_in3p2 = 3.00000;
+	float n_in3p2 = 1.00000;
 	float n_in3p3 = 1.00000;
 	{
 		vec2 __dir = UV - n_in3p1;
@@ -132,6 +132,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-385.424, 59.477)
 flags/unshaded = true
 nodes/vertex/18/node = SubResource("VisualShaderNodeBillboard_k0enf")
 nodes/vertex/18/position = Vector2(-240, 240)

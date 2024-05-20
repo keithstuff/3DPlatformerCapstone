@@ -10,8 +10,17 @@ var dash_bool := false
 
 var cutscene := false
 
+@onready var walkingAudioPlayer = $AudioStreamPlayer_Walking
+@onready var jumpingAudioPlayer = $AudioStreamPlayer_Jumping
+@onready var dashingAudioPlayer = $AudioStreamPlayer_Dashing
+@onready var landingAudioPlayer = $AudioStreamPlayer_Landing
+@onready var wispSpawnAudioPlayer = $AudioStreamPlayer_WispSpawn
+@onready var wispRecallAudioPlayer = $AudioStreamPlayer_WispRecall
+
+
 @onready var blink_timer := $BlinkTimer
-@onready var cooldown_timer := $ActionCooldown
+@onready var dash_cooldown_timer := $DashCooldown
+@onready var jump_cooldown_timer := $DJCooldown
 @onready var twist_pivot := $TwistPivot
 @onready var pitch_pivot := $TwistPivot/PitchPivot
 @onready var mesh := $MeshInstance3D
@@ -86,13 +95,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not cutscene:
 		velocity.y = JUMP_VELOCITY
 		animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		jumpingAudioPlayer.play()
 	
 	
 	# DOUBLE JUMP
 	if Input.is_action_just_pressed("jump") and not is_on_floor() and not cutscene:
-		if action_bool == true and cooldown_timer.time_left == 0:
-			cooldown_timer.start(1)
-			action_bool = false
+		if jump_cooldown_timer.time_left == 0:
+			jump_cooldown_timer.start(1)
 			velocity.y = JUMP_VELOCITY
 			animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 			jumpparticles.emitting = true
@@ -103,9 +112,8 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y) * twist_pivot.basis.inverse()).normalized()
 	
 	#DASH
-	if Input.is_action_just_pressed("dash") and action_bool == true and cooldown_timer.time_left == 0 and direction and not cutscene:
-		cooldown_timer.start(1)
-		action_bool = false
+	if Input.is_action_just_pressed("dash") and dash_cooldown_timer.time_left == 0 and direction and not cutscene:
+		dash_cooldown_timer.start(1)
 		dash_bool = true
 		velocity = Vector3(direction.x * DASH_SPEED, 0, direction.z * DASH_SPEED)
 		dashparticles.emitting = true
@@ -144,7 +152,6 @@ func _physics_process(delta):
 		
 	
 	if is_on_floor():
-		action_bool = true
 		animtree["parameters/FallingBlend/blend_amount"] = 0
 		animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_ABORT
 		
@@ -153,7 +160,9 @@ func _physics_process(delta):
 		mesh.rotation.y = lerp_angle(mesh.rotation.y, lookdir, delta * angular_acceleration)
 
 
-
+func step_sound():
+	walkingAudioPlayer.pitch_scale = rng.randf_range(0.01, 2)
+	walkingAudioPlayer.play()
 
 #Camera
 func _unhandled_input(event: InputEvent) -> void:
@@ -176,19 +185,19 @@ func spawn_wisp():
 		else:
 			wispcount = 1
 		assign_wisp_number.emit(wispcount)
-		print(wispcount)
 		wisptotal+=1
+		wispSpawnAudioPlayer.play()
 		
 
 func wisp_recall():
 	if wisptotal > 0:
 		recall_wisp.emit(wispline)
-		print(wispline)
 		if wispline >= 3:
 			wispline = 1
 		else:
 			wispline += 1
 		wisptotal -= 1
+		wispRecallAudioPlayer.play()
 
 
 
