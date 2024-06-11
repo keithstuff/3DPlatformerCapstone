@@ -1,14 +1,16 @@
-[gd_scene load_steps=52 format=3 uid="uid://kb784qg6gfr4"]
+[gd_scene load_steps=59 format=3 uid="uid://kb784qg6gfr4"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerCharacter.gd" id="1_a2pnt"]
 [ext_resource type="PackedScene" uid="uid://25kka5ucytfe" path="res://Scenes/character2.glb" id="2_y24un"]
 [ext_resource type="PackedScene" uid="uid://crkcyyimyolqf" path="res://Scenes/Objects/HALO.glb" id="3_eekte"]
 [ext_resource type="Material" uid="uid://br7rs3qwp5nmy" path="res://Art/materials/player_character.tres" id="3_w0fer"]
-[ext_resource type="Material" uid="uid://7h17uuquybda" path="res://Art/materials/toonoutline.tres" id="4_5jqms"]
+[ext_resource type="Material" uid="uid://bmn70b2rpte7l" path="res://Scenes/Objects/hairglow.tres" id="4_d4dhh"]
 [ext_resource type="Texture2D" uid="uid://b0p4tr2n126x0" path="res://Art/materials/whitecirlce.png" id="6_ymat6"]
 [ext_resource type="Texture2D" uid="uid://h6a233hvk3v" path="res://Art/Particles/Complex/smoke/smoke2_7.png" id="7_ejaa5"]
 [ext_resource type="Texture2D" uid="uid://bhefqc3cmwqwj" path="res://Art/Particles/Complex/impacts/impact_4.png" id="8_nxxoq"]
 [ext_resource type="Texture2D" uid="uid://5uh1ain80hw8" path="res://Art/Particles/Complex/flare/flare_12.png" id="9_hdwh7"]
+[ext_resource type="Texture2D" uid="uid://bures80qwesnn" path="res://Art/Particles/Complex/star/star_4.png" id="10_m5vk4"]
+[ext_resource type="Texture2D" uid="uid://chw30qf31fk08" path="res://Art/Particles/Complex/smoke/smoke3_11.png" id="11_26gxx"]
 
 [sub_resource type="Animation" id="Animation_lpjyc"]
 resource_name = "Idle"
@@ -1210,6 +1212,7 @@ animation = &"Jumpflip"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_cnwqu"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d162y"]
+graph_offset = Vector2(121.271, -23.6136)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_yy0xs")
 nodes/Animation/position = Vector2(500, 320)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_nndwh")
@@ -1226,25 +1229,6 @@ nodes/JumpShot/node = SubResource("AnimationNodeOneShot_cnwqu")
 nodes/JumpShot/position = Vector2(1420, 140)
 nodes/output/position = Vector2(1600, 140)
 node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation", &"FallingBlend", 0, &"Blend2", &"FallingBlend", 1, &"Animation 3", &"JumpShot", 0, &"FallingBlend", &"JumpShot", 1, &"Jump", &"output", 0, &"JumpShot"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_md2vy"]
-next_pass = ExtResource("4_5jqms")
-albedo_color = Color(0.945098, 1, 1, 1)
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp8ec"]
-cull_mode = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.05
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_clrn8"]
-next_pass = SubResource("StandardMaterial3D_fp8ec")
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 5.41
 
 [sub_resource type="Animation" id="Animation_l3nrf"]
 length = 0.001
@@ -1396,11 +1380,67 @@ size = Vector2(1.5, 1.5)
 radius = 0.22958
 height = 1.57237
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_21lav"]
+emission_shape = 2
+emission_sphere_radius = 0.1
+angle_min = -360.0
+angle_max = 360.0
+spread = 123.843
+initial_velocity_min = 3.0
+initial_velocity_max = 10.0
+radial_accel_min = -23.14
+radial_accel_max = 28.1
+tangential_accel_min = -26.45
+tangential_accel_max = 16.53
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wng1n"]
+transparency = 1
+albedo_texture = ExtResource("10_m5vk4")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 2.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_yivck"]
+material = SubResource("StandardMaterial3D_wng1n")
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="Curve" id="Curve_l4sm6"]
+_data = [Vector2(0, 0.0659341), 0.0, 0.0, 0, 0, Vector2(0.149533, 0.989011), 0.0, 0.0, 0, 0, Vector2(0.607477, 0.703297), 0.0, 0.0, 0, 0, Vector2(0.981308, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ylmm1"]
+curve = SubResource("Curve_l4sm6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3rkhm"]
+angle_min = -230.1
+angle_max = 444.4
+angular_velocity_min = -11.9
+angular_velocity_max = 107.11
+gravity = Vector3(0, 1.8, 0)
+scale_curve = SubResource("CurveTexture_ylmm1")
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_01ao4"]
+transparency = 1
+albedo_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+albedo_texture = ExtResource("11_26gxx")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_vlopl"]
+material = SubResource("StandardMaterial3D_01ao4")
+
 [node name="PlayerCharacter" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_a2pnt")
+mouse_sensitivity = 0.002
+speed = 7
 
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.444, 0)
@@ -1473,7 +1513,7 @@ surface_material_override/0 = ExtResource("3_w0fer")
 surface_material_override/0 = ExtResource("3_w0fer")
 
 [node name="Hair" parent="MeshInstance3D/Armature/GeneralSkeleton" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_md2vy")
+surface_material_override/0 = ExtResource("4_d4dhh")
 
 [node name="Heady" parent="MeshInstance3D/Armature/GeneralSkeleton" index="4"]
 surface_material_override/0 = ExtResource("3_w0fer")
@@ -1488,7 +1528,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 2.84217e-14, -0.707106, 
 transform = Transform3D(1, 0, 0, 0, 0.43, 0, 0, 0, 1, -0.0128976, 0.748688, 0.603818)
 
 [node name="Torus" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_clrn8")
+surface_material_override/0 = ExtResource("4_d4dhh")
 
 [node name="HaloPlayer" type="AnimationPlayer" parent="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]
 libraries = {
@@ -1599,8 +1639,33 @@ bus = &"SFX"
 [node name="AudioStreamPlayer_WispRecall" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
 
+[node name="DamageCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="fizzleparticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.684411, 0)
+emitting = false
+amount = 20
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_21lav")
+draw_pass_1 = SubResource("QuadMesh_yivck")
+
+[node name="fizzlesmoke" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.489031, 0)
+emitting = false
+amount = 10
+explosiveness = 0.03
+process_material = SubResource("ParticleProcessMaterial_3rkhm")
+draw_pass_1 = SubResource("QuadMesh_vlopl")
+
+[connection signal="fizzled" from="." to="." method="_on_fizzled"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="BlinkTimer" to="." method="_on_blink_timer_timeout"]
+[connection signal="timeout" from="DamageCooldown" to="." method="_on_damage_cooldown_timeout"]
 
 [editable path="MeshInstance3D"]
 [editable path="MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2/HALO"]

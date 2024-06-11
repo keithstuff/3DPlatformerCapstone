@@ -1,12 +1,12 @@
 extends Control
 
-@onready var ebutton = $OnScreen/EButton
+@onready var ebutton = $OnScreen/Container/EButton
 @onready var wispbar1 = $OnScreen/HBoxContainer/Wisp1
 @onready var wispbar2 = $OnScreen/HBoxContainer/Wisp2
 @onready var wispbar3 = $OnScreen/HBoxContainer/Wisp3
 @onready var wispbaroffmaterial = preload('res://Art/materials/darkglow.tres')
 
-@onready var cleartimelabel = $EndScreen/Cleartime/Label
+@onready var cleartimelabel = $EndScreen/Container/Cleartime/Label
 @onready var endscreen = $EndScreen
 @onready var onscreen = $OnScreen
 
@@ -27,15 +27,17 @@ func _process(delta):
 		cleartimelabel.text = "%02d:%02d" % timer()
 
 func _on_interact_range_area_entered(area):
-	if ebutton.visible == false:
-		ebutton.visible = true
-	else: ebutton.visible = false
+	if area.get_parent().is_in_group("towers"):
+		if ebutton.visible == false:
+			ebutton.visible = true
+		else: ebutton.visible = false
 
 
 func _on_interact_range_area_exited(area):
-	if ebutton.visible == false:
-		ebutton.visible = true
-	else: ebutton.visible = false
+	if area.get_parent().is_in_group("towers"):
+		if ebutton.visible == false:
+			ebutton.visible = true
+		else: ebutton.visible = false
 
 
 func _on_player_character_assign_wisp_number(num):

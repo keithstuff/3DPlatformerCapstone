@@ -36,6 +36,7 @@ rim = 0.35
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.998948, 0.00423562, -0.0456535, 0.0444442, -0.334093, 0.941492, -0.0112647, -0.942531, -0.33393, 2.7231, 26.385, -23.6669)
+visible = false
 light_energy = 0.5
 shadow_enabled = true
 shadow_blur = 2.628
@@ -55,6 +56,17 @@ transform = Transform3D(1, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.82236, 29.6909, -0.6659
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_e0s1i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7125, 4.83035, -0.342424)
+
+[node name="GeneralSkeleton" parent="PlayerCharacter/MeshInstance3D/Armature" index="0"]
+bones/0/rotation = Quaternion(-7.34796e-05, 0.00485682, 0.00269492, 0.999985)
+bones/1/rotation = Quaternion(7.3473e-05, -0.00485682, -0.00269493, 0.999985)
+bones/2/rotation = Quaternion(0.878099, -0.287219, -0.363721, -0.11897)
+bones/4/rotation = Quaternion(0.357234, 0.136831, -0.862811, 0.330483)
+bones/6/rotation = Quaternion(0.964932, -0.00132626, 0.00539369, -0.262441)
+bones/7/rotation = Quaternion(0.262113, -0.0111231, 0.00302737, 0.964968)
+bones/8/rotation = Quaternion(2.52015e-09, 0.999878, 0.0156111, -3.86633e-08)
+bones/9/rotation = Quaternion(0.966501, -0.0038513, 0.00400235, 0.256602)
+bones/10/rotation = Quaternion(0.265657, -2.61417e-08, -2.66351e-09, 0.964068)
 
 [node name="HALO" parent="PlayerCharacter/MeshInstance3D/Armature/GeneralSkeleton/Heady/HaloArm1/HaloArm2" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

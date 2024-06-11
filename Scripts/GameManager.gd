@@ -6,7 +6,14 @@ signal level_completed
 signal level_started
 @onready var cutcam = $CutsceneCamera
 @onready var playercam = $"../PlayerCharacter/TwistPivot/PitchPivot/Camera3D"
+@onready var blackhole = $"../BlackHole"
+@onready var player = $"../PlayerCharacter"
 @onready var cutscenetimer = $CutsceneTimer
+
+@onready var spawnpoint = blackhole.position
+
+signal respawn
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	active_towers = 0
@@ -25,16 +32,19 @@ func _process(delta):
 func _on_tower_1_tower_activated():
 	active_towers += 1
 	print(active_towers)
+	spawnpoint = player.position
 
 
 func _on_tower_2_tower_activated():
 	active_towers += 1
 	print(active_towers)
+	spawnpoint = player.position
 
 
 func _on_tower_3_tower_activated():
 	active_towers += 1
 	print(active_towers)
+	spawnpoint = player.position
 
 
 func _on_tower_4_tower_activated():
@@ -45,16 +55,13 @@ func _on_tower_4_tower_activated():
 func _on_tower_5_tower_activated():
 	active_towers += 1
 	print(active_towers)
+	spawnpoint = player.position
 
 
 func _on_level_completed():
 	if levelcomplete == false:
 		cutcam.make_current()
-		cutcam.position = playercam.position
-		cutcam.rotation = playercam.rotation
 		var tween = get_tree().create_tween()
-		tween.tween_property(cutcam, "position", Vector3(0,20,30), 1)
-		tween.parallel().tween_property(cutcam, "rotation", Vector3(0,0,0), 1)
 		cutscenetimer.start(4)
 		levelcomplete = true
 
@@ -62,3 +69,12 @@ func _on_level_completed():
 func _on_cutscene_timer_timeout():
 	cutcam.clear_current()
 	
+
+
+func _on_player_character_fizzled():
+	$FizzleTimer.start(3)
+
+
+func _on_fizzle_timer_timeout():
+	player.position = spawnpoint
+	respawn.emit()

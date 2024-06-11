@@ -8,7 +8,7 @@ max_value = 3.0
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.373832, 0.923077), 7.05495, 7.05495, 0, 0, Vector2(0.663551, 0.89011), -6.85897, -6.85897, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CurveTexture" id="CurveTexture_6hhm0"]
+[sub_resource type="CurveTexture" id="CurveTexture_p6u6s"]
 curve = SubResource("Curve_6kvaa")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rme7q"]
@@ -16,12 +16,12 @@ angle_min = -230.1
 angle_max = 444.4
 angular_velocity_min = 0.1
 angular_velocity_max = 0.5
-angular_velocity_curve = SubResource("CurveTexture_6hhm0")
+angular_velocity_curve = SubResource("CurveTexture_p6u6s")
 gravity = Vector3(0, 0, 0)
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kt70"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hif01"]
 transparency = 1
 shading_mode = 0
 albedo_texture = ExtResource("2_xfhgy")
@@ -31,7 +31,7 @@ particles_anim_v_frames = 8
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ycqkv"]
-material = SubResource("StandardMaterial3D_7kt70")
+material = SubResource("StandardMaterial3D_hif01")
 
 [sub_resource type="SphereMesh" id="SphereMesh_qqbg2"]
 

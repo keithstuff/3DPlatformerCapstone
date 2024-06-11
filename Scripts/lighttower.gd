@@ -1,7 +1,8 @@
 extends StaticBody3D
 
 @onready var player = $"../PlayerCharacter"
-signal tower_activated()
+signal tower_activated(where)
+
 
 var on_material = preload("res://Art/materials/tower1.tres")
 var off_material = preload("res://Art/materials/tower2.tres")
@@ -9,6 +10,7 @@ var off_material = preload("res://Art/materials/tower2.tres")
 @onready var self_area = $Area3D
 @onready var light = $OmniLight3D
 var player_area = Area3D
+
 
 var interactable = false
 
@@ -21,11 +23,11 @@ func _ready():
 
 
 func _on_area_3d_area_entered(area):
-	if area.is_in_group("player"):
+	if area.get_parent().is_in_group("player"):
 		interactable = true
 
 func _on_area_3d_area_exited(area):
-	if area.is_in_group("player"):
+	if area.get_parent().is_in_group("player"):
 		interactable = false
 	
 func _process(delta):

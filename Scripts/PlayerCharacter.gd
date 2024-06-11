@@ -2,13 +2,15 @@ extends CharacterBody3D
 
 var rng = RandomNumberGenerator.new()
 
-var mouse_sensitivity := 0.001
+@export var mouse_sensitivity := 0.001
 var twist_input := 0.0
 var pitch_input := 0.0
 var action_bool := true
 var dash_bool := false
-
+var controls_disabled := false
 var cutscene := false
+
+@onready var hairglow = preload("res://Scenes/Objects/hairglow.tres")
 
 @onready var walkingAudioPlayer = $AudioStreamPlayer_Walking
 @onready var jumpingAudioPlayer = $AudioStreamPlayer_Jumping
@@ -29,9 +31,15 @@ var cutscene := false
 @onready var animplayer := $AnimationPlayer
 @onready var level := get_parent()
 @onready var intrange := $InteractRange
+
 @onready var walkparticles = $walkparticles
 @onready var jumpparticles = $jumpparticles
 @onready var dashparticles = $dashparticles
+@onready var fizzlestars = $fizzleparticles
+@onready var fizzlesmoke = $fizzlesmoke
+
+@onready var damagecooldown = $DamageCooldown
+@onready var touchingdamage = false
 
 @onready var blackhole = $"../BlackHole"
 
@@ -46,11 +54,13 @@ const DASH_SPEED = 25.0
 const DASH_TIME = 0.3
 var dash_time_count = 0
 
-const SPEED = 5.0
+@export var speed = 10
 const JUMP_VELOCITY = 10
 var angular_acceleration = 7
 const TERM_FALL_VELOCITY = -15
 signal levelend
+signal fizzled
+var alreadyfizzled = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -73,6 +83,10 @@ func _process(delta: float) -> void:
 	
 	twist_input = 0.0
 	pitch_input = 0.0
+	
+	if hairglow.emission_energy_multiplier <= 0 and alreadyfizzled == false:
+		fizzled.emit()
+		alreadyfizzled = true
 
 
 func _physics_process(delta):
@@ -82,6 +96,7 @@ func _physics_process(delta):
 	
 	match is_on_floor():
 		true: 
+			
 			match  velocity != Vector3(0,0,0):
 				true:
 					walkparticles.emitting = true
@@ -92,14 +107,14 @@ func _physics_process(delta):
 		
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not cutscene:
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not cutscene and not controls_disabled:
 		velocity.y = JUMP_VELOCITY
 		animtree["parameters/JumpShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		jumpingAudioPlayer.play()
 	
 	
 	# DOUBLE JUMP
-	if Input.is_action_just_pressed("jump") and not is_on_floor() and not cutscene:
+	if Input.is_action_just_pressed("jump") and not is_on_floor() and not cutscene and not controls_disabled:
 		if jump_cooldown_timer.time_left == 0:
 			jump_cooldown_timer.start(1)
 			velocity.y = JUMP_VELOCITY
@@ -133,14 +148,15 @@ func _physics_process(delta):
 			mesh.visible = true
 			velocity = Vector3(0, 0, 0)
 			dash_time_count = 0
-	if not dash_bool and not cutscene:
+	if not dash_bool and not cutscene and not controls_disabled:
 		if direction:
-			velocity.x = direction.x * SPEED
-			velocity.z = direction.z * SPEED
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, 1)
 			velocity.z = move_toward(velocity.z, 0, 1)
 	move_and_slide()
+	
 	
 	#Falling and Running Animations
 	if(abs(input_dir.x) + abs(input_dir.y) >= 1) and is_on_floor():
@@ -238,3 +254,45 @@ func _on_black_hole_blackholeclose():
 func end_of_the_road():
 	levelend.emit()
 	
+
+func _on_laser_touching_player(num):
+	match num:
+		0: 
+			if damagecooldown.time_left == 0 and not cutscene:
+				hairglow.emission_energy_multiplier -= 0.4
+				fizzlestars.emitting = true
+				print(hairglow.emission_energy_multiplier)
+				damagecooldown.start(0.3)
+				touchingdamage = true
+				
+		1: 
+			touchingdamage = false
+			damagecooldown.stop()
+
+
+func _on_damage_cooldown_timeout():
+	if touchingdamage and not cutscene:
+		hairglow.emission_energy_multiplier -= 0.1
+		fizzlestars.emitting = true
+		damagecooldown.start(0.3)
+
+
+func _on_fizzled():
+	controls_disabled = true
+	self.velocity = Vector3(0,0,0)
+	hairglow.emission_energy_multiplier -= 0.1
+	mesh.visible = false
+	fizzlestars.emitting = true
+	fizzlesmoke.emitting = true
+	
+	
+
+
+
+
+func _on_game_manager_respawn():
+	hairglow.emission_energy_multiplier = 1
+	alreadyfizzled = false
+	fizzlesmoke.emitting = false
+	mesh.visible = true
+	controls_disabled = false
