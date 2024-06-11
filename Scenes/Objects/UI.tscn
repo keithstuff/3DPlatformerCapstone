@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://b36xbv1t8d61f"]
+
+[ext_resource type="Script" path="res://Scripts/uiscript.gd" id="1_j30fj"]
+[ext_resource type="Texture2D" uid="uid://i330juo2v5w2" path="res://Art/Keys/F_Key_Light.png" id="2_i3gnk"]
+[ext_resource type="Texture2D" uid="uid://cxhw0l258yo40" path="res://Art/whitebox.png" id="2_n7hny"]
+[ext_resource type="Texture2D" uid="uid://cab06kdl0ryoh" path="res://Art/progressbar.png" id="3_m3g2m"]
+[ext_resource type="FontFile" uid="uid://jxme2ljt15wg" path="res://Art/Fonts/Exo-VariableFont_wght.ttf" id="3_pjqkn"]
+[ext_resource type="Texture2D" uid="uid://dxl0lnhs3fwre" path="res://Art/glow2.png" id="4_wmu4b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gfoaf"]
+font = ExtResource("3_pjqkn")
+font_size = 80
+font_color = Color(0, 0, 0, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n0apw"]
+font = ExtResource("3_pjqkn")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j30fj")
+
+[node name="EndScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Container" type="Container" parent="EndScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WhiteBackground" type="Sprite2D" parent="EndScreen/Container"]
+position = Vector2(125, 78)
+scale = Vector2(10.913, 10)
+texture = ExtResource("2_n7hny")
+
+[node name="Label" type="Label" parent="EndScreen/Container"]
+layout_mode = 2
+text = "stage clear"
+label_settings = SubResource("LabelSettings_gfoaf")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Cleartime" type="Control" parent="EndScreen/Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EndScreen/Container/Cleartime"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_n0apw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OnScreen" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OnScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Wisp1" type="Sprite2D" parent="OnScreen/HBoxContainer"]
+position = Vector2(50, -51.9999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_m3g2m")
+
+[node name="Glow" type="Sprite2D" parent="OnScreen/HBoxContainer/Wisp1"]
+z_index = -1
+texture = ExtResource("4_wmu4b")
+
+[node name="Wisp2" type="Sprite2D" parent="OnScreen/HBoxContainer"]
+position = Vector2(125, -51.9999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_m3g2m")
+
+[node name="Glow" type="Sprite2D" parent="OnScreen/HBoxContainer/Wisp2"]
+z_index = -1
+texture = ExtResource("4_wmu4b")
+
+[node name="Wisp3" type="Sprite2D" parent="OnScreen/HBoxContainer"]
+position = Vector2(200, -51.9999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_m3g2m")
+
+[node name="Glow" type="Sprite2D" parent="OnScreen/HBoxContainer/Wisp3"]
+z_index = -1
+texture = ExtResource("4_wmu4b")
+
+[node name="Container" type="Container" parent="OnScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="EButton" type="Sprite2D" parent="OnScreen/Container"]
+position = Vector2(33, -43)
+scale = Vector2(0.960001, 0.92)
+texture = ExtResource("2_i3gnk")

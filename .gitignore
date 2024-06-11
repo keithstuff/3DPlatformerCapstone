@@ -3,3 +3,4 @@
 /build/
 keys
 keys.pub
+*.glb

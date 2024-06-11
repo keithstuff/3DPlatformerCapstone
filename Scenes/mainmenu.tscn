@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck8a381wq4k3o"]
+
+[ext_resource type="Script" path="res://Scripts/mainmenu.gd" id="1_w6cs2"]
+[ext_resource type="Texture2D" uid="uid://b14t1vwd8sjon" path="res://Art/Solid_black.png" id="2_co0sv"]
+[ext_resource type="Texture2D" uid="uid://cw86l2kdfligc" path="res://Art/Untitled(1).png" id="2_pprje"]
+[ext_resource type="FontFile" uid="uid://jxme2ljt15wg" path="res://Art/Fonts/Exo-VariableFont_wght.ttf" id="3_yjc2j"]
+[ext_resource type="Texture2D" uid="uid://cx05gmel4nkx5" path="res://Art/OIG3.jpg" id="4_mdi5c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kjlk"]
+font = ExtResource("3_yjc2j")
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbn54"]
+font = ExtResource("3_yjc2j")
+font_size = 80
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w6cs2")
+
+[node name="Button" type="Button" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296
+anchor_top = 0.772
+anchor_right = 0.704
+anchor_bottom = 0.949
+offset_left = 0.00799561
+offset_top = -0.256012
+offset_right = -0.00805664
+offset_bottom = 0.0479736
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource("2_pprje")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "BEGIN"
+label_settings = SubResource("LabelSettings_8kjlk")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlackBackground" type="Sprite2D" parent="."]
+position = Vector2(596, 330)
+scale = Vector2(6.285, 3.605)
+texture = ExtResource("2_co0sv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = -306.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EMPOINT"
+label_settings = SubResource("LabelSettings_tbn54")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 202.0
+offset_right = 680.0
+offset_bottom = 385.0
+texture = ExtResource("4_mdi5c")
+expand_mode = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

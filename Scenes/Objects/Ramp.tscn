@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://biec6lstjm5k2"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0vawk"]
+points = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8hd1t"]
+diffuse_mode = 3
+specular_mode = 1
+
+[sub_resource type="PrismMesh" id="PrismMesh_in0gs"]
+material = SubResource("StandardMaterial3D_8hd1t")
+left_to_right = 0.0
+
+[node name="Ramp" type="StaticBody3D"]
+transform = Transform3D(17.2428, 0, 0, 0, 7.46028, 0, 0, 0, 3.83922, 23.4, 3.55203, 0.0901394)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_0vawk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+mesh = SubResource("PrismMesh_in0gs")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbxd5sl634j4t"]
+
+[ext_resource type="Texture2D" uid="uid://ccr43wveh610r" path="res://Art/MarsSmoothRock_UnitySpecular2kBitmap/Textures/MarsSmoothRock_height.png" id="3_c8b2j"]
+[ext_resource type="Texture2D" uid="uid://qydq2lmg5a6r" path="res://Art/MarsSmoothRock_UnitySpecular2kBitmap/Textures/MarsSmoothRock_normal.png" id="5_2vd8u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5lmh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kjfwc"]
+diffuse_mode = 3
+specular_mode = 1
+normal_texture = ExtResource("5_2vd8u")
+heightmap_texture = ExtResource("3_c8b2j")
+
+[sub_resource type="BoxMesh" id="BoxMesh_5oakv"]
+material = SubResource("StandardMaterial3D_kjfwc")
+
+[node name="Block2" type="StaticBody3D"]
+transform = Transform3D(6.38621, 0, 0, 0, 7.25139, 0, 0, 0, 3.83922, 35.2, 3.95203, 0.29014)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_v5lmh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5oakv")

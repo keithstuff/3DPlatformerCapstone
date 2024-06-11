@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5pyggvjd1yfl"]
+
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_leg5q"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_leg5q")
+
+[node name="CutsceneCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.883471, -0.468485, 0, 0.468485, 0.883471, 4.13592, 22.9138, 32.0664)
+
+[node name="CutsceneTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FizzleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="level_completed" from="." to="." method="_on_level_completed"]
+[connection signal="timeout" from="CutsceneTimer" to="." method="_on_cutscene_timer_timeout"]
+[connection signal="timeout" from="FizzleTimer" to="." method="_on_fizzle_timer_timeout"]
